@@ -1,0 +1,32 @@
+{
+  "targetWeight": 180,
+  "routine": {
+    "numberOfSessions": 8,
+    "sessions": [
+      {
+        "sessionLength": 8,
+        "workouts": [
+          {
+            "name": "Bench Press",
+            "weight": [95, 100, 105, 110, 115, 120, 125, 130],
+            "sets": 5,
+            "reps": 5,
+            "completed": false
+          }
+        ]
+      }
+    ]
+  },
+  "workouts": [
+    {
+      "name": "Bench Press",
+      "notes": "Make Sure to Do This Well.",
+      "startingWeight": 95,
+      "calculateWithBar": true,
+      "weightToAdd": 5,
+      "sets": 5,
+      "reps": 5
+    }
+  ],
+  "barWeight": 45
+}
