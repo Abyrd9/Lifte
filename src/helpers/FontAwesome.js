@@ -4,9 +4,33 @@ import {
   faLock,
   faDumbbell,
   faPlus,
-  faEdit
+  faPlusCircle,
+  faMinus,
+  faEdit,
+  faSave,
+  faEllipsisV,
+  faCaretDown,
+  faTimes,
+  faUser,
+  faMinusCircle,
+  faArrowLeft
 } from '@fortawesome/free-solid-svg-icons';
 
 export const addIcons = () => {
-  library.add(faEnvelope, faLock, faDumbbell, faPlus, faEdit);
+  library.add(
+    faEnvelope,
+    faLock,
+    faDumbbell,
+    faPlus,
+    faPlusCircle,
+    faMinus,
+    faMinusCircle,
+    faEdit,
+    faSave,
+    faEllipsisV,
+    faCaretDown,
+    faTimes,
+    faUser,
+    faArrowLeft
+  );
 };

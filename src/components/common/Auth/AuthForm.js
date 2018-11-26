@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
-import TextInput from '../common/TextInput';
-import Button from '../common/AuthButton';
+import AuthInput from './AuthInput';
+import Button from '../Button';
 
 const AuthFormContainer = styled.form`
   ${props => {
@@ -15,13 +15,13 @@ const AuthFormContainer = styled.form`
       margin: 0 auto;
       width: 95%;
       padding: 20px;
-      background-color: #fff;
+      background-color: ${theme.colors.white};
       display: flex;
       flex-direction: column;
       box-shadow: ${theme.shadow};
       p {
         font-size: 14px;
-        color: ${theme.colors.offBlack};
+        color: ${theme.colors.blackSecondary};
         margin-bottom: 5px;
       }
     `;
@@ -37,19 +37,21 @@ const AuthForm = ({
 }) => (
   <AuthFormContainer>
     <p>Sign In</p>
-    <TextInput
+    <AuthInput
       onChange={onEmailChange}
       value={email}
       type="email"
       placeholder="email"
     />
-    <TextInput
+    <AuthInput
       onChange={onPasswordChange}
       value={password}
       type="password"
       placeholder="password"
     />
-    <Button onClick={onSignIn}>Sign In</Button>
+    <Button isFullWidth onClick={onSignIn}>
+      Sign In
+    </Button>
   </AuthFormContainer>
 );
 

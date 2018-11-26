@@ -9,9 +9,12 @@ export default {
   },
   colors: {
     primary: '#0E6AE9',
-    offWhite: '#F4F4FC',
-    offBlack: '#9C9CA1',
-    black: '#2E2E2E'
+    secondary: '#4CB944 ',
+    white: '#FDFFFC',
+    whiteSecondary: '#E6E8E6',
+    black: '#2E2E2E',
+    blackSecondary: '#9C9CA1',
+    error: '#F8333C'
   },
   media: {
     laptop: (...args) => css`
@@ -39,5 +42,6 @@ export default {
   transition: (property, time, delay = 0) => {
     return `${property} ${time}s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`;
   },
+  ease: 'cubic-bezier(0.4, 0, 0.2, 1)',
   shadow: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);'
 };

@@ -6,7 +6,7 @@ const Icon = styled(FontAwesomeIcon)`
   ${props => {
     const { theme } = props;
     return css`
-      color: ${theme.colors.offBlack};
+      color: ${theme.colors.blackSecondary};
       margin-right: 8px;
       height: 12px;
     `;
@@ -19,7 +19,7 @@ const StyledLabel = styled.label`
     return css`
       border-radius: 1px;
       margin: 5px 0px;
-      background-color: ${theme.colors.offWhite};
+      background-color: ${theme.colors.whiteSecondary};
       padding: 8px;
       display: flex;
       align-items: center;
@@ -30,11 +30,11 @@ const StyledLabel = styled.label`
       input {
         border: none;
         background-color: transparent;
-        color: ${theme.colors.offBlack};
+        color: ${theme.colors.blackSecondary};
         font-size: 14px;
         flex: 1;
         &::placeholder {
-          color: ${theme.colors.offBlack};
+          color: ${theme.colors.blackSecondary};
           font-size: 14px;
         }
         &:focus {
@@ -45,7 +45,7 @@ const StyledLabel = styled.label`
   }}
 `;
 
-const TextInput = ({
+const AuthInput = ({
   name,
   type,
   value,
@@ -55,7 +55,7 @@ const TextInput = ({
   alt,
   onChange,
   onFocus,
-  onBlur,
+  onBlur
 }) => {
   let iconName = '';
   switch (type) {
@@ -88,4 +88,4 @@ const TextInput = ({
   );
 };
 
-export default TextInput;
+export default AuthInput;

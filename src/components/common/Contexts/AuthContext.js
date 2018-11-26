@@ -6,6 +6,7 @@ class AuthContext extends Component {
   state = {
     isAuthenticated: false,
     user: {},
+    userId: null,
     handleSignIn: (email, password) => this.handleSignIn(email, password)
   };
 
@@ -19,9 +20,9 @@ class AuthContext extends Component {
   authListener = () => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.setState({ isAuthenticated: true, user });
+        this.setState({ isAuthenticated: true, user, userId: user.uid });
       } else {
-        this.setState({ isAuthenticated: false, user: {} });
+        this.setState({ isAuthenticated: false, user: {}, userId: null });
       }
     });
   };

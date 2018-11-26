@@ -6,7 +6,7 @@ const Icon = styled(FontAwesomeIcon)`
   ${props => {
     const { theme } = props;
     return css`
-      color: #fff;
+      color: ${theme.colors.white};
     `;
   }}
 `;
@@ -18,9 +18,6 @@ const Button = styled.button`
       height: 40px;
       width: 40px;
       border-radius: 100%;
-      position: absolute;
-      top: calc(100% - 50px);
-      left: calc(100% - 50px);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -30,12 +27,12 @@ const Button = styled.button`
   }}
 `;
 
-const AddButton = ({ onClick, icon }) => {
+const FooterButton = ({ onClick, disabled, icon, size, className }) => {
   return (
-    <Button onClick={onClick}>
-      <Icon icon={icon} size="1x" />
+    <Button disabled={disabled} className={className} onClick={onClick}>
+      <Icon icon={icon} size={size} />
     </Button>
   );
 };
 
-export default AddButton;
+export default FooterButton;

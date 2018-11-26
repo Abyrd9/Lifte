@@ -1,28 +1,8 @@
 import React, { PureComponent } from 'react';
-import styled, { css } from 'styled-components';
-import AuthForm from './common/AuthForm';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { auth } from 'firebase';
-import AuthContext from './AuthContext';
-import Background from './common/Background';
-
-const LogoIcon = styled(FontAwesomeIcon)`
-  ${props => {
-    const { theme } = props;
-    return css`
-      background-color: #fff;
-      padding: 15px;
-      border-radius: 3px;
-      position: absolute;
-      top: 15%;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-      color: ${theme.colors.offBlack};
-      box-shadow: ${theme.shadow};
-    `;
-  }}
-`;
+import { Background } from './common/Layout';
+import AuthContext from './common/Contexts/AuthContext';
+import AuthLogoIcon from './common/Auth/AuthLogoIcon';
+import AuthForm from './common/Auth/AuthForm';
 
 class Auth extends PureComponent {
   state = {
@@ -32,7 +12,7 @@ class Auth extends PureComponent {
   render() {
     return (
       <Background>
-        <LogoIcon icon="dumbbell" size="2x" />
+        <AuthLogoIcon icon="dumbbell" size="2x" />
         <AuthContext>
           {auth => (
             <AuthForm
