@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import firebase from 'firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Divider } from '../Layout';
+import { AdminContext } from '../Contexts/AdminContext'
 
 const Icon = styled(FontAwesomeIcon)`
   ${props => {
@@ -58,16 +59,17 @@ const Container = styled.div`
 `;
 
 class WorkoutTitle extends Component {
+  static contextType = AdminContext;
   state = {
     weight: 0,
     edit: false,
-    userId: 'DJjKXxB7aVeJPmlZ2EdeBn5KAvr2'
   };
 
   componentDidMount() {
+    const userId = firebase.auth().currentUser.uid;
     firebase
       .database()
-      .ref(`users/${this.state.userId}/goalWeight/`)
+      .ref(`users/${userId}/goalWeight/`)
       .on('value', snapshot => {
         let goalWeight = snapshot.val();
         if (goalWeight === null) goalWeight = 0;
@@ -84,7 +86,7 @@ class WorkoutTitle extends Component {
   componentWillUnmount() {
     firebase
       .database()
-      .ref(`users/${this.state.userId}/goalWeight/`)
+      .ref(`users/${this.context.userId}/goalWeight/`)
       .off();
   }
 
@@ -92,7 +94,7 @@ class WorkoutTitle extends Component {
     try {
       await firebase
         .database()
-        .ref(`/users/${this.state.userId}/`)
+        .ref(`/users/${this.context.userId}/`)
         .update({ goalWeight: val });
       this.setState({ edit: false, weight: val });
     } catch (err) {

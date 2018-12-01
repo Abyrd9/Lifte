@@ -15,9 +15,9 @@ export const updateRoutine = userId => async (routine, routineId) => {
   try {
     await firebase
       .database()
-      .ref(`/users/${userId}/workouts/${routineId}`)
+      .ref(`/users/${userId}/routines/${routineId}`)
       .update(routine);
   } catch (err) {
-    console.error('Unable to update workout.');
+    console.error('Unable to update routine.');
   }
 };

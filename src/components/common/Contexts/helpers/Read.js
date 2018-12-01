@@ -7,24 +7,20 @@ export const getWorkoutListListener = userId => {
       .ref(`/users/${userId}/workouts/`)
       .on('value', snapshot => {
         let workoutList = snapshot.val();
-        workoutList
-          ? (workoutList = Object.values(workoutList))
-          : (workoutList = []);
+        workoutList ? (workoutList = Object.values(workoutList)) : (workoutList = []);
         resolve(workoutList);
       });
   });
 };
 
 export const getRoutineListListener = userId => {
-  new Promise(resolve => {
+  return new Promise(resolve => {
     firebase
       .database()
       .ref(`/users/${userId}/routines/`)
       .on('value', snapshot => {
         let routineList = snapshot.val();
-        routineList
-          ? (routineList = Object.values(routineList))
-          : (routineList = []);
+        routineList ? (routineList = Object.values(routineList)) : (routineList = []);
         resolve(routineList);
       });
   });
@@ -33,14 +29,14 @@ export const getRoutineListListener = userId => {
 export const removeWorkoutListListener = userId => {
   firebase
     .database()
-    .ref(`users/${this.state.userId}/workouts/`)
+    .ref(`users/${userId}/workouts/`)
     .off();
 };
 
 export const removeRoutineListListener = userId => {
   firebase
     .database()
-    .ref(`users/${this.state.userId}/routines/`)
+    .ref(`users/${userId}/routines/`)
     .off();
 };
 
@@ -51,9 +47,7 @@ export const getWorkoutList = userId => {
       .ref(`/users/${userId}/workouts/`)
       .once('value', snapshot => {
         let workoutList = snapshot.val();
-        workoutList
-          ? (workoutList = Object.values(workoutList))
-          : (workoutList = []);
+        workoutList ? (workoutList = Object.values(workoutList)) : (workoutList = []);
         resolve(workoutList);
       });
   });
@@ -66,9 +60,7 @@ export const getRoutineList = userId => {
       .ref(`/users/${userId}/routines/`)
       .on('value', snapshot => {
         let routineList = snapshot.val();
-        routineList
-          ? (routineList = Object.values(routineList))
-          : (routineList = []);
+        routineList ? (routineList = Object.values(routineList)) : (routineList = []);
         resolve(routineList);
       });
   });

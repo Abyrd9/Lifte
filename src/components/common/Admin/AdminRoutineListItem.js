@@ -70,14 +70,11 @@ class AdminRoutineListItem extends Component {
         </Container>
         {this.state.editModalIsOpen && (
           <AdminModal>
-            <RoutineModalContent initialRoutine={initialRoutine} />
-            <AdminModalButtons
-              type="routines"
-              editType="edit"
-              keyId={routineId}
-              onCancel={() => this.setState({ editModalIsOpen: false })}
-              onSave={() => this.setState({ editModalIsOpen: false })}
-            />
+            <RoutineModalContent
+              type="edit"
+              closeModal={() => this.setState({ editModalIsOpen: false })}
+              initialRoutine={initialRoutine}
+              routineId={routineId} />
           </AdminModal>
         )}
         {this.state.deleteModalIsOpen && (
@@ -85,13 +82,13 @@ class AdminRoutineListItem extends Component {
             title="Delete Routine"
             text="Are you sure you want to delete this routine?">
             <AdminModalButtons
-              enableButton
+              onCancelClick={() => this.setState({ deleteModalIsOpen: false })}
+              onActionClick={() => {
+                this.context.handleDeleteRoutine(routineId);
+                this.setState({ deleteModalIsOpen: false });
+              }}
+              disabled={false}
               buttonText="Delete"
-              type="routines"
-              editType="delete"
-              keyId={routineId}
-              onCancel={() => this.setState({ deleteModalIsOpen: false })}
-              onSave={() => this.setState({ deleteModalIsOpen: false })}
             />
           </AdminModal>
         )}

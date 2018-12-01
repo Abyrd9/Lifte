@@ -30,7 +30,8 @@ class RoutineModalContent extends Component {
 
   componentDidMount() {
     if (!!this.props.initialRoutine) {
-      this.setState({ ...this.props.initialRoutine });
+      const { name, sessionLength, currentSession, workouts } = this.props.initialRoutine;
+      this.setState({ name, sessionLength, currentSession, workouts });
     }
   }
 
@@ -42,36 +43,46 @@ class RoutineModalContent extends Component {
   handleCreateRoutineWorkout = workout => {
     const routineWorkout = {
       name: workout.name,
-      workoutId: workout.key,
+      key: workout.key,
       sessions: []
     };
+    let weight = parseInt(workout.startingWeight - parseInt(workout.weightToAdd));
     for (let i = 0; i < this.state.sessionLength; i++) {
-      let sessions = [];
-      for (let i = 0; i < this.state.sessionLength; i++) {
-        sessions.push({ completed: false, index: i });
-      }
+      weight = weight + parseInt(workout.weightToAdd);
       routineWorkout.sessions.push({
+        completed: false,
         index: i,
-        sessionCompleted: false,
-        sessions
+        sets: workout.sets,
+        reps: workout.reps,
+        weight: weight,
       });
     }
     this.setState({ workouts: [...this.state.workouts, routineWorkout] });
   };
 
   handleChangeSessionLength = (val, limit) => {
-    const newWorkouts = this.state.workouts.map(workout => {
-      const newSessions = workout.sessions.filter((session, i) => i < val);
-      return {
-        name: workout.name,
-        workoutId: workout.workoutId,
-        sessions: newSessions
-      };
-    });
     if (val.length < limit) {
+      const newWorkouts = this.updateSessionLength(val);
       this.setState({ sessionLength: val, workouts: newWorkouts });
     }
   };
+
+  updateSessionLength = sessionLength => {
+    const { workouts } = this.state;
+    const workoutsWithUpdatedSessionLength = workouts.map(workout => {
+      let newSessions = [];
+      for (let i = 0; i < sessionLength; i++) {
+        let sessionCompletedValue;
+        !!workout.sessions[i]
+          ? sessionCompletedValue = workout.sessions[i].completed
+          : sessionCompletedValue = false
+        newSessions.push({ completed: sessionCompletedValue, index: i })
+      }
+      workout.sessions = newSessions;
+      return workout;
+    })
+    return workoutsWithUpdatedSessionLength;
+  }
 
   handleChangeValue = (val, key, limit) => {
     if (val.length < limit) {
@@ -80,13 +91,14 @@ class RoutineModalContent extends Component {
   };
 
   handleActionClick = () => {
-    switch (this.prop.type) {
+    switch (this.props.type) {
       case 'create': {
         this.context.handleCreateRoutine(this.state);
         break;
       }
       case 'edit': {
-        this.context.handleUpdateRoutine(this.state);
+        console.log(this.state, 'edit')
+        this.context.handleUpdateRoutine(this.state, this.props.routineId);
         break;
       }
       default:

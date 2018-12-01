@@ -12,14 +12,14 @@ import {
 class AdminWorkoutList extends Component {
   state = {
     workouts: [],
-    routines: []
+    routines: [],
   };
 
   componentDidMount() {
-    const userId = 'DJjKXxB7aVeJPmlZ2EdeBn5KAvr2';
+    const userId = firebase.auth().currentUser.uid;
     firebase
       .database()
-      .ref(`users/${userId}/workouts/`)
+      .ref(`users/${userId}/workouts`)
       .on('value', snapshot => {
         let workoutList = snapshot.val();
         workoutList
@@ -29,7 +29,7 @@ class AdminWorkoutList extends Component {
       });
     firebase
       .database()
-      .ref(`users/${userId}/routines/`)
+      .ref(`users/${userId}/routines`)
       .on('value', snapshot => {
         let routineList = snapshot.val();
         routineList
@@ -40,14 +40,14 @@ class AdminWorkoutList extends Component {
   }
 
   componentWillUnmount() {
-    const userId = 'DJjKXxB7aVeJPmlZ2EdeBn5KAvr2';
+    const userId = firebase.auth().currentUser.uid;
     firebase
       .database()
-      .ref(`users/${userId}/workouts/`)
+      .ref(`users/${this.state.userId}/workouts`)
       .off();
     firebase
       .database()
-      .ref(`users/${userId}/routines/`)
+      .ref(`users/${this.state.userId}/routines`)
       .off();
   }
 
@@ -59,8 +59,11 @@ class AdminWorkoutList extends Component {
             {this.state.routines.map(routine => {
               const workoutList = routine.workouts.map(routineWorkout => {
                 const fullWorkout = this.state.workouts.find(
-                  workout => workout.key === routineWorkout.workoutId
+                  workout => {
+                    return workout.key === routineWorkout.key
+                  }
                 );
+                console.log(fullWorkout)
                 return fullWorkout;
               });
               return (
@@ -68,7 +71,7 @@ class AdminWorkoutList extends Component {
                   name={routine.name}
                   sessionLength={routine.sessionLength}
                   currentSession={routine.currentSession}
-                  workouts={workoutList}
+                  workouts={routine.workouts}
                   routineId={routine.key}
                   key={routine.key}>
                   <RoutineWorkoutList name="Workouts:">

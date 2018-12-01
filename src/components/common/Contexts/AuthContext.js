@@ -14,6 +14,7 @@ class AuthContext extends Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then(() => console.log('User Succesfully logged in.'))
       .catch(err => console.log(err.code, err.message));
   };
 

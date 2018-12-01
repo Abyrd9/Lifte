@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import AuthInput from './AuthInput';
 import Button from '../Button';
 
-const AuthFormContainer = styled.form`
+const AuthFormContainer = styled.div`
   ${props => {
     const { theme } = props;
     return css`
