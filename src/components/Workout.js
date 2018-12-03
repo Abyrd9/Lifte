@@ -4,9 +4,11 @@ import { Background, Container } from './common/Layout';
 import WorkoutTitle from './common/Workout/WorkoutTitle';
 import Header from './common/Header';
 import FooterButtonsContainer from './common/FooterButtonsContainer';
-import Dropdown from './common/Dropdown';
+import RoutineValueListener from './common/Contexts/RoutineValueListener';
 import AdminContextComponent from './common/Contexts/AdminContext';
 import WorkoutRoutineSelector from './common/Workout/WorkoutRoutineSelector';
+import WorkoutButtonList from './common/Workout/WorkoutButtonList';
+import WorkoutItem from './common/Workout/WorkoutItem';
 
 class Workout extends Component {
   state = {
@@ -19,18 +21,68 @@ class Workout extends Component {
     }
   };
   render() {
+    const { currentRoutine, isEditable } = this.state;
+    console.log(currentRoutine);
     return (
       <Background hasContainer>
         <Header />
         <AdminContextComponent>
           <Container>
-            <WorkoutTitle weight={180} isEditable={this.state.isEditable} />
+            <WorkoutTitle isEditable={isEditable} />
           </Container>
+          {!!currentRoutine.key && (
+            <RoutineValueListener routineId={currentRoutine.key}>
+              {routine => {
+                if (!!routine.value) {
+                  return (
+                    <WorkoutButtonList
+                      routineId={routine.value.key}
+                      sessionLength={routine.value.sessionLength}
+                      currentSession={routine.value.currentSession}
+                    />
+                  );
+                }
+                return null;
+              }}
+            </RoutineValueListener>
+          )}
           <Container>
-            <WorkoutRoutineSelector onClick={val => this.setState({ currentRoutine: val })} currentRoutine={this.state.currentRoutine} />
+            <WorkoutRoutineSelector
+              onClick={val => this.setState({ currentRoutine: val })}
+              name={currentRoutine.name}
+            />
+            {!!currentRoutine.key && (
+              <RoutineValueListener routineId={currentRoutine.key}>
+                {routine => {
+                  if (!!routine.value) {
+                    const { workouts, currentSession } = routine.value;
+                    const index = parseInt(currentSession);
+
+                    return (
+                      <React.Fragment>
+                        {workouts.map(workout => (
+                          <WorkoutItem
+                            name={workout.name}
+                            weight={workout.sessions[index].weight}
+                            sets={workout.sessions[index].sets}
+                            reps={workout.sessions[index].reps}
+                            isCompleted
+                            // isCompleted={workout.sessions[index].completed}
+                          />
+                        ))}
+                      </React.Fragment>
+                    );
+                  }
+                  return null;
+                }}
+              </RoutineValueListener>
+            )}
           </Container>
         </AdminContextComponent>
-        <FooterButtonsContainer isEditable={this.state.isEditable} onEditClick={() => this.setState({ isEditable: !this.state.isEditable })} />
+        <FooterButtonsContainer
+          isEditable={isEditable}
+          onEditClick={() => this.setState({ isEditable: !isEditable })}
+        />
       </Background>
     );
   }

@@ -13,7 +13,8 @@ import {
   faTimes,
   faUser,
   faMinusCircle,
-  faArrowLeft
+  faArrowLeft,
+  faCheck
 } from '@fortawesome/free-solid-svg-icons';
 
 export const addIcons = () => {
@@ -31,6 +32,7 @@ export const addIcons = () => {
     faCaretDown,
     faTimes,
     faUser,
-    faArrowLeft
+    faArrowLeft,
+    faCheck
   );
 };

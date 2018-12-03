@@ -6,7 +6,11 @@ import AuthContext from './common/Contexts/AuthContext';
 import Workout from './Workout';
 import Admin from './Admin';
 
-const AuthenticatedRoute = ({ isAuthenticated, component: Component, ...rest }) => (
+const AuthenticatedRoute = ({
+  isAuthenticated,
+  component: Component,
+  ...rest
+}) => (
   <Route
     {...rest}
     render={props =>
@@ -21,7 +25,11 @@ const AuthenticatedRoute = ({ isAuthenticated, component: Component, ...rest }) 
   />
 );
 
-const NonAuthenticatedRoute = ({ isAuthenticated, component: Component, ...rest }) => (
+const NonAuthenticatedRoute = ({
+  isAuthenticated,
+  component: Component,
+  ...rest
+}) => (
   <Route
     {...rest}
     render={props =>
@@ -41,10 +49,10 @@ class Routes extends Component {
     return (
       <AuthContext>
         {auth => {
-          console.log(auth)
           return (
             <Router>
               <React.Fragment>
+                <Route exact path="/" render={() => <Redirect to="/login" />} />
                 <NonAuthenticatedRoute
                   isAuthenticated={auth.isAuthenticated}
                   component={Auth}

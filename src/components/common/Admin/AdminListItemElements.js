@@ -207,6 +207,7 @@ const RoutineWorkoutListItemStyled = styled.div`
       h1 {
         ${theme.font(16, 700)};
         color: ${theme.colors.black};
+        margin-left: 3px;
       }
       span {
         width: 1px;

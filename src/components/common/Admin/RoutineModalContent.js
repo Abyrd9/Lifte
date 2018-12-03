@@ -11,6 +11,7 @@ import {
 import Dropdown from '../Dropdown';
 import { Divider } from '../Layout';
 import AdminModalButtons from './AdminModalButtons';
+import WorkoutsListener from '../Contexts/WorkoutsListener';
 
 const Container = styled.div`
   ${props => {
@@ -30,7 +31,12 @@ class RoutineModalContent extends Component {
 
   componentDidMount() {
     if (!!this.props.initialRoutine) {
-      const { name, sessionLength, currentSession, workouts } = this.props.initialRoutine;
+      const {
+        name,
+        sessionLength,
+        currentSession,
+        workouts
+      } = this.props.initialRoutine;
       this.setState({ name, sessionLength, currentSession, workouts });
     }
   }
@@ -46,7 +52,9 @@ class RoutineModalContent extends Component {
       key: workout.key,
       sessions: []
     };
-    let weight = parseInt(workout.startingWeight - parseInt(workout.weightToAdd));
+    let weight = parseInt(
+      workout.startingWeight - parseInt(workout.weightToAdd)
+    );
     for (let i = 0; i < this.state.sessionLength; i++) {
       weight = weight + parseInt(workout.weightToAdd);
       routineWorkout.sessions.push({
@@ -54,7 +62,7 @@ class RoutineModalContent extends Component {
         index: i,
         sets: workout.sets,
         reps: workout.reps,
-        weight: weight,
+        weight: weight
       });
     }
     this.setState({ workouts: [...this.state.workouts, routineWorkout] });
@@ -74,15 +82,15 @@ class RoutineModalContent extends Component {
       for (let i = 0; i < sessionLength; i++) {
         let sessionCompletedValue;
         !!workout.sessions[i]
-          ? sessionCompletedValue = workout.sessions[i].completed
-          : sessionCompletedValue = false
-        newSessions.push({ completed: sessionCompletedValue, index: i })
+          ? (sessionCompletedValue = workout.sessions[i].completed)
+          : (sessionCompletedValue = false);
+        newSessions.push({ completed: sessionCompletedValue, index: i });
       }
       workout.sessions = newSessions;
       return workout;
-    })
+    });
     return workoutsWithUpdatedSessionLength;
-  }
+  };
 
   handleChangeValue = (val, key, limit) => {
     if (val.length < limit) {
@@ -97,7 +105,6 @@ class RoutineModalContent extends Component {
         break;
       }
       case 'edit': {
-        console.log(this.state, 'edit')
         this.context.handleUpdateRoutine(this.state, this.props.routineId);
         break;
       }
@@ -125,11 +132,16 @@ class RoutineModalContent extends Component {
             onChange={e => this.handleChangeSessionLength(e.target.value, 3)}
           />
           <Dropdown placeholder="Add Workouts...">
-            {allWorkouts.map(workout => (
-              <button onClick={() => this.handleCreateRoutineWorkout(workout)}>
-                {workout.name}
-              </button>
-            ))}
+            <WorkoutsListener>
+              {list =>
+                list.workouts.map(workout => (
+                  <button
+                    onClick={() => this.handleCreateRoutineWorkout(workout)}>
+                    {workout.name}
+                  </button>
+                ))
+              }
+            </WorkoutsListener>
           </Dropdown>
           <RoutineWorkoutList>
             {this.state.workouts.map((workout, i) => (
