@@ -22,7 +22,6 @@ class Workout extends Component {
   };
   render() {
     const { currentRoutine, isEditable } = this.state;
-    console.log(currentRoutine);
     return (
       <Background hasContainer>
         <Header />
@@ -38,7 +37,7 @@ class Workout extends Component {
                     <WorkoutButtonList
                       routineId={routine.value.key}
                       sessionLength={routine.value.sessionLength}
-                      currentSession={routine.value.currentSession}
+                      currentSession={routine.value.currentSession + 1}
                     />
                   );
                 }
@@ -57,17 +56,19 @@ class Workout extends Component {
                   if (!!routine.value) {
                     const { workouts, currentSession } = routine.value;
                     const index = parseInt(currentSession);
-
                     return (
                       <React.Fragment>
                         {workouts.map(workout => (
                           <WorkoutItem
+                            key={workout.key}
+                            routineId={currentRoutine.key}
+                            workoutId={workout.key}
                             name={workout.name}
                             weight={workout.sessions[index].weight}
                             sets={workout.sessions[index].sets}
                             reps={workout.sessions[index].reps}
-                            isCompleted
-                            // isCompleted={workout.sessions[index].completed}
+                            isCompleted={workout.sessions[index].completed}
+                            currentSession={currentSession}
                           />
                         ))}
                       </React.Fragment>

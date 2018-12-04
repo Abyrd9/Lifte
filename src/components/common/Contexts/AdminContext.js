@@ -16,7 +16,8 @@ import {
   updateWorkout,
   updateRoutine,
   updateRoutineValue,
-  updateRoutineWorkoutValue
+  updateRoutineWorkoutValue,
+  updateRoutineWorkout
 } from './helpers/Update';
 import { deleteWorkout, deleteRoutine } from './helpers/Delete';
 
@@ -42,6 +43,18 @@ class AdminContextComponent extends Component {
       this.handleUpdateRoutineValue()(routineId, key, value),
     handleUpdateRoutineWorkoutValue: (routineId, workoutId, key, value) =>
       this.handleUpdateRoutineWorkoutValue()(routineId, workoutId, key, value),
+    handleUpdateRoutineWorkout: (
+      routineId,
+      workoutId,
+      workout,
+      currentSession
+    ) =>
+      this.handleUpdateRoutineWorkout()(
+        routineId,
+        workoutId,
+        workout,
+        currentSession
+      ),
     handleDeleteWorkout: key => this.handleDeleteWorkout()(key),
     handleDeleteRoutine: key => this.handleDeleteRoutine()(key)
   };
@@ -126,6 +139,11 @@ class AdminContextComponent extends Component {
   handleUpdateRoutineWorkoutValue = () => {
     const userId = this.getUserId();
     return updateRoutineWorkoutValue(userId);
+  };
+
+  handleUpdateRoutineWorkout = () => {
+    const userId = this.getUserId();
+    return updateRoutineWorkout(userId);
   };
 
   handleDeleteWorkout = () => {

@@ -45,6 +45,7 @@ class WorkoutButtonList extends Component {
   render() {
     const { routineId, sessionLength, currentSession } = this.props;
     const buttonList = [];
+
     if (!!sessionLength) {
       for (let i = 0; i < sessionLength; i++) {
         buttonList.push(
@@ -53,10 +54,10 @@ class WorkoutButtonList extends Component {
               this.context.handleUpdateRoutineValue(
                 routineId,
                 'currentSession',
-                i + 1
+                i
               )
             }
-            isActive={i + 1 === parseInt(currentSession)}>
+            isActive={currentSession - 1 === i}>
             {i + 1}
           </WorkoutButtonListItem>
         );

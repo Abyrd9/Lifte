@@ -11,10 +11,11 @@ import {
   faEllipsisV,
   faCaretDown,
   faTimes,
+  faTimesCircle,
   faUser,
   faMinusCircle,
   faArrowLeft,
-  faCheck
+  faCheckCircle
 } from '@fortawesome/free-solid-svg-icons';
 
 export const addIcons = () => {
@@ -31,8 +32,9 @@ export const addIcons = () => {
     faEllipsisV,
     faCaretDown,
     faTimes,
+    faTimesCircle,
     faUser,
     faArrowLeft,
-    faCheck
+    faCheckCircle
   );
 };
