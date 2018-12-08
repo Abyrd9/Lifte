@@ -8,11 +8,12 @@ const WorkoutButtonListContainer = styled.div`
     const { theme } = props;
     return css`
       width: 100%;
+      max-width: 300px;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      margin: 15px 0px;
+      margin: 15px auto;
     `;
   }}
 `;
@@ -35,7 +36,7 @@ export const WorkoutButtonListItem = styled.button`
         ? theme.colors.white
         : theme.colors.blackSecondary};
       ${theme.font(18, 600)};
-      margin: 0px 5px;
+      margin: 5px 5px;
     `;
   }}
 `;

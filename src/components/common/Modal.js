@@ -15,6 +15,7 @@ const BackDrop = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px;
+  overflow: hidden;
 `;
 
 const Content = styled.div`

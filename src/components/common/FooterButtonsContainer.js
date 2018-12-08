@@ -7,7 +7,7 @@ const Container = styled.div`
   box-sizing: border-box;
   position: fixed;
   width: 100%;
-  top: calc(100% - 50px);
+  top: calc(100% - 60px);
   left: 0;
   display: flex;
   justify-content: flex-end;
@@ -17,9 +17,9 @@ const Container = styled.div`
 
 const EllipsesIcon = styled(FooterButton)`
   ${props => css`
-		height: 30px;
-		width: 30px;
-    font-size: 14px;
+		height: 40px;
+		width: 40px;
+    font-size: 16px;
 		transition: ${props.theme.transition('all', 0.1)}
 		transform: ${props.isOpen ? 'rotate(-45deg)' : 'rotate(0deg)'};
   `}
@@ -28,8 +28,8 @@ const EllipsesIcon = styled(FooterButton)`
 const AddIcon = styled(FooterButton)`
   ${props => css`
     position: absolute;
-    top: -40px;
-    left: calc(100% - 55px);
+    top: -50px;
+    left: calc(100% - 70px);
     transform: ${props.isOpen
       ? 'scale(1) translate(0px, 0px)'
       : 'scale(0) translate(6px, 40px)'};
@@ -43,7 +43,7 @@ const EditIcon = styled(FooterButton)`
   ${props => css`
     position: absolute;
     top: -5px;
-    left: calc(100% - 90px);
+    left: calc(100% - 110px);
     transform: ${props.isOpen
       ? 'scale(1) translate(0px, 0px)'
       : 'scale(0) translate(40px, 5px)'};

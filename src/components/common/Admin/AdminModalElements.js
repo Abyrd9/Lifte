@@ -31,6 +31,7 @@ const NameInputStyled = styled.div`
         border-bottom: 2px solid ${theme.colors.blackSecondary};
         width: 100%;
         margin: 5px 0px;
+        padding-bottom: 3px;
         &::placeholder {
           color: ${theme.colors.whiteSecondary};
           font-size: 16px;
@@ -84,6 +85,7 @@ const NumberBlockStyled = styled.div`
         max-height: 18px;
         border-bottom: 2px solid ${theme.colors.blackSecondary};
         margin: 5px 0px;
+        padding-bottom: 3px;
         &::placeholder {
           color: ${theme.colors.whiteSecondary};
           font-size: 16px;
@@ -138,6 +140,7 @@ const NumberSetsRepsStyled = styled.div`
           max-height: 18px;
           border-bottom: 2px solid ${theme.colors.blackSecondary};
           margin: 5px 0px;
+          padding-bottom: 3px;
           &::placeholder {
             color: ${theme.colors.whiteSecondary};
             font-size: 16px;

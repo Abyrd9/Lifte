@@ -15,9 +15,10 @@ const Button = styled.button`
   ${props => {
     const { theme } = props;
     return css`
-      height: 40px;
-      width: 40px;
+      height: 50px;
+      width: 50px;
       border-radius: 100%;
+      font-size: 16px;
       display: flex;
       justify-content: center;
       align-items: center;

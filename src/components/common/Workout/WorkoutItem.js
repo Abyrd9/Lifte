@@ -14,11 +14,11 @@ const ItemContainer = styled.div`
       padding: 12px 0px;
       border-bottom: 1px solid ${theme.colors.blackSecondary};
       &:first-of-type {
-        margin-top: 15px;
+        margin-top: 45px;
         border-top: 1px solid ${theme.colors.blackSecondary};
       }
       &:last-of-type {
-        margin-bottom: 15px;
+        margin-bottom: 45px;
       }
     `;
   }}
