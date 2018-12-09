@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
 import Button from '../Button';
-import { AdminContext } from '../Contexts/AdminContext';
+import { AdminContext } from '../../contexts/AdminContext';
 
 const ButtonContainer = styled.div`
   ${props => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { AdminContext } from '../Contexts/AdminContext';
+import { AdminContext } from '../../contexts//AdminContext';
 
 const WorkoutButtonListContainer = styled.div`
   ${props => {
@@ -34,7 +34,7 @@ export const WorkoutButtonListItem = styled.button`
         : theme.colors.white};
       color: ${props.isActive
         ? theme.colors.white
-        : theme.colors.blackSecondary};
+        : theme.colors.gray};
       ${theme.font(18, 600)};
       margin: 5px 5px;
     `;

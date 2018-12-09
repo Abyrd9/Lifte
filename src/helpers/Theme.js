@@ -10,10 +10,11 @@ export default {
   colors: {
     primary: '#0E6AE9',
     secondary: '#4CB944 ',
+    secondary_light: '#DEF2DD',
     white: '#FDFFFC',
-    whiteSecondary: '#E6E8E6',
     black: '#2E2E2E',
-    blackSecondary: '#9C9CA1',
+    gray: '#9C9CA1',
+    gray_light: '#E6E8E6',
     error: '#F8333C'
   },
   media: {

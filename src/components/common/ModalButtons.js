@@ -20,8 +20,8 @@ const Container = styled.div`
         color: ${theme.colors.white};
         border-radius: 3px;
         &:disabled {
-          background-color: ${theme.colors.blackSecondary};
-          color: ${theme.colors.whiteSecondary};
+          background-color: ${theme.colors.gray};
+          color: ${theme.colors.gray_light};
         }
       }
     `;

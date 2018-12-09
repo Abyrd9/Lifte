@@ -18,28 +18,19 @@ const Button = styled.button`
       padding: 8px 5px;
       color: ${theme.colors.white};
       border-radius: 2px;
-      background-color: ${props.isSecondary
-        ? theme.colors.secondary
-        : theme.colors.primary};
+      background-color: ${props.isSecondary ? theme.colors.secondary : theme.colors.primary};
       a {
         color: ${theme.colors.white};
       }
       &:disabled {
-        background-color: ${theme.colors.whiteSecondary};
-        color: ${theme.colors.blackSecondary};
+        background-color: ${theme.colors.gray_light};
+        color: ${theme.colors.gray};
       }
     `;
   }}
 `;
 
-const AuthButton = ({
-  children,
-  onClick,
-  disabled,
-  isSecondary,
-  isFullWidth,
-  className
-}) => (
+const AuthButton = ({ children, onClick, disabled, isSecondary, isFullWidth, className }) => (
   <Button
     isSecondary={isSecondary}
     isFullWidth={isFullWidth}

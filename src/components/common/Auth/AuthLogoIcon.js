@@ -27,7 +27,7 @@ const Icon = styled(FontAwesomeIcon)`
   ${props => {
     const { theme } = props;
     return css`
-      color: ${theme.colors.blackSecondary};
+      color: ${theme.colors.gray};
     `;
   }}
 `;

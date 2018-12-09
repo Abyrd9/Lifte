@@ -32,7 +32,7 @@ const TitleInput = styled.input`
       color: ${theme.colors.black};
       background-color: transparent;
       border: none;
-      border-bottom: 1px solid ${theme.colors.blackSecondary};
+      border-bottom: 1px solid ${theme.colors.gray};
     `;
   }}
 `;
@@ -50,7 +50,7 @@ const WeightBlock = styled.div`
         color: ${theme.colors.black};
         background-color: transparent;
         border: none;
-        border-bottom: 1px solid ${theme.colors.blackSecondary};
+        border-bottom: 1px solid ${theme.colors.gray};
         max-width: 22px;
         &:first-of-type {
           max-width: 32px;
@@ -60,13 +60,13 @@ const WeightBlock = styled.div`
         display: inline-block;
         width: 1px;
         height: 22px;
-        background-color: ${theme.colors.blackSecondary};
+        background-color: ${theme.colors.gray};
         margin: 0px 10px;
         align-self: center;
       }
       p {
         ${theme.font(16, 400)};
-        color: ${theme.colors.blackSecondary};
+        color: ${theme.colors.gray};
         margin: 0px 10px;
       }
     `;

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Background } from './common/Layout';
-import AuthContext from './common/Contexts/AuthContext';
+import AuthContext from './contexts/AuthContext';
 import AuthLogoIcon from './common/Auth/AuthLogoIcon';
 import AuthForm from './common/Auth/AuthForm';
 
@@ -19,12 +19,8 @@ class Auth extends PureComponent {
               email={this.state.email}
               password={this.state.password}
               onEmailChange={e => this.setState({ email: e.target.value })}
-              onPasswordChange={e =>
-                this.setState({ password: e.target.value })
-              }
-              onSignIn={() =>
-                auth.handleSignIn(this.state.email, this.state.password)
-              }
+              onPasswordChange={e => this.setState({ password: e.target.value })}
+              onSignIn={() => auth.handleSignIn(this.state.email, this.state.password)}
             />
           )}
         </AuthContext>

@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import firebase from 'firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Divider } from '../Layout';
-import { AdminContext } from '../Contexts/AdminContext'
+import { AdminContext } from '../../contexts/AdminContext';
 
 const Icon = styled(FontAwesomeIcon)`
   ${props => {
@@ -23,7 +23,7 @@ const Container = styled.div`
       margin-top: 10px;
       color: ${theme.colors.black};
       h1 {
-        color: ${theme.colors.blackSecondary};
+        color: ${theme.colors.gray};
         text-align: center;
         ${theme.font(18, 400)};
         margin-bottom: 10px;
@@ -37,8 +37,8 @@ const Container = styled.div`
         max-width: 100px;
         ${theme.font(48, 800)};
         border: none;
-        color: ${theme.colors.blackSecondary};
-        border-bottom: 1px solid ${theme.colors.blackSecondary};
+        color: ${theme.colors.gray};
+        border-bottom: 1px solid ${theme.colors.gray};
         &:focus {
           outline: none;
         }
@@ -62,7 +62,7 @@ class WorkoutTitle extends Component {
   static contextType = AdminContext;
   state = {
     weight: 0,
-    edit: false,
+    edit: false
   };
 
   componentDidMount() {

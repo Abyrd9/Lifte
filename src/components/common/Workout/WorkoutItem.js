@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { AdminContext } from '../Contexts/AdminContext';
+import { AdminContext } from '../../contexts//AdminContext';
 import WorkoutItemContent from './WorkoutItemContent';
 import WorkoutItemEdit from './WorkoutItemEdit';
 
@@ -12,10 +12,10 @@ const ItemContainer = styled.div`
       display: flex;
       align-items: center;
       padding: 12px 0px;
-      border-bottom: 1px solid ${theme.colors.blackSecondary};
+      border-bottom: 1px solid ${theme.colors.gray};
       &:first-of-type {
         margin-top: 45px;
-        border-top: 1px solid ${theme.colors.blackSecondary};
+        border-top: 1px solid ${theme.colors.gray};
       }
       &:last-of-type {
         margin-bottom: 45px;

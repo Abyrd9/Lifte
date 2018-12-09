@@ -9,9 +9,9 @@ import {
   EditButton,
   DeleteButton
 } from './AdminListItemElements';
-import { AdminContext } from '../Contexts/AdminContext';
+import { AdminContext } from '../../contexts//AdminContext';
 import AdminModal from './AdminModal';
-import WorkoutModalContent from './WorkoutModalContent';
+import ModalContentWorkout from '../ModalContentWorkout/ModalContentWorkout';
 import AdminModalButtons from './AdminModalButtons';
 
 const Container = styled.div`
@@ -27,14 +27,7 @@ class AdminWorkoutListItem extends Component {
   state = { editModalIsOpen: false, deleteModalIsOpen: false };
   static contextType = AdminContext;
   render() {
-    const {
-      name,
-      sets,
-      reps,
-      startingWeight,
-      weightToAdd,
-      workoutId
-    } = this.props;
+    const { name, sets, reps, startingWeight, weightToAdd, workoutId } = this.props;
     const initialWorkout = {
       name,
       startingWeight,
@@ -47,30 +40,19 @@ class AdminWorkoutListItem extends Component {
         <Container>
           <BlockContainer>
             <ListItemBlock name="Name:" value={name} />
-            <EditButton
-              onClick={() => this.setState({ editModalIsOpen: true })}
-            />
-            <DeleteButton
-              onClick={() => this.setState({ deleteModalIsOpen: true })}
-            />
+            <EditButton onClick={() => this.setState({ editModalIsOpen: true })} />
+            <DeleteButton onClick={() => this.setState({ deleteModalIsOpen: true })} />
           </BlockContainer>
           <BlockContainer>
             <ListItemSetsReps name="Sets & Reps:" sets={sets} reps={reps} />
-            <ListItemBlock
-              name="Starting Weight:"
-              value={`${startingWeight}lbs`}
-            />
-            <ListItemBlock
-              name="Weight To Add:"
-              value={`${weightToAdd}lbs`}
-              noSpan
-            />
+            <ListItemBlock name="Starting Weight:" value={`${startingWeight}lbs`} />
+            <ListItemBlock name="Weight To Add:" value={`${weightToAdd}lbs`} noSpan />
           </BlockContainer>
           <Divider />
         </Container>
         {this.state.editModalIsOpen && (
           <AdminModal title="Edit Workout">
-            <WorkoutModalContent
+            <ModalContentWorkout
               type="edit"
               closeModal={() => this.setState({ editModalIsOpen: false })}
               initialWorkout={initialWorkout}
@@ -79,9 +61,7 @@ class AdminWorkoutListItem extends Component {
           </AdminModal>
         )}
         {this.state.deleteModalIsOpen && (
-          <AdminModal
-            title="Delete Workout"
-            text="Are you sure you want to delete this workout?">
+          <AdminModal title="Delete Workout" text="Are you sure you want to delete this workout?">
             <AdminModalButtons
               onCancelClick={() => this.setState({ deleteModalIsOpen: false })}
               onActionClick={() => {

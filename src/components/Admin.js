@@ -8,8 +8,8 @@ import AdminAddButton from './common/Admin/AdminAddButton';
 import AdminModal from './common/Admin/AdminModal';
 import AdminTitle from './common/Admin/AdminTitle';
 import AdminList from './common/Admin/AdminList';
-import AdminContextComponent from './common/Contexts/AdminContext';
-import WorkoutModalContent from './common/Admin/WorkoutModalContent';
+import AdminContextComponent from './contexts/AdminContext';
+import ModalContentWorkout from './common/ModalContentWorkout/ModalContentWorkout';
 import RoutineModalContent from './common/Admin/RoutineModalContent';
 import AdminModalButtons from './common/Admin/AdminModalButtons';
 
@@ -27,10 +27,7 @@ class Admin extends Component {
         <AdminContextComponent>
           <Container>
             <AdminTitle isHalf title="Admin" />
-            <AdminTabs
-              currentTab={this.state.currentTab}
-              changeTab={this.state.changeTab}
-            />
+            <AdminTabs currentTab={this.state.currentTab} changeTab={this.state.changeTab} />
             <Divider />
             <AdminAddButton
               currentTab={this.state.currentTab}
@@ -38,11 +35,7 @@ class Admin extends Component {
             />
           </Container>
           <Container>
-            <AdminTitle
-              title={
-                this.state.currentTab === 'routines' ? 'Routines' : 'Workouts'
-              }
-            />
+            <AdminTitle title={this.state.currentTab === 'routines' ? 'Routines' : 'Workouts'} />
             <AdminList type={this.state.currentTab} />
           </Container>
         </AdminContextComponent>
@@ -58,7 +51,7 @@ class Admin extends Component {
             )}
             {this.state.currentTab === 'workouts' && (
               <AdminModal title="Create New Workout">
-                <WorkoutModalContent
+                <ModalContentWorkout
                   type="create"
                   closeModal={() => this.setState({ modalIsOpen: false })}
                 />

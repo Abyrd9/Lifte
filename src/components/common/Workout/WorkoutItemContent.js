@@ -63,13 +63,13 @@ const WeightBlock = styled.div`
         display: inline-block;
         width: 1px;
         height: 22px;
-        background-color: ${theme.colors.blackSecondary};
+        background-color: ${theme.colors.gray};
         margin: 0px 10px;
         align-self: center;
       }
       p {
         ${theme.font(16, 400)};
-        color: ${theme.colors.blackSecondary};
+        color: ${theme.colors.gray};
       }
     `;
   }}
@@ -90,7 +90,7 @@ const ButtonBlock = styled.div`
         height: 22px;
         width: 22px;
         border-radius: 100%;
-        border: 1px solid ${theme.colors.blackSecondary};
+        border: 1px solid ${theme.colors.gray};
         position: relative;
       }
     `;

@@ -6,7 +6,7 @@ const Icon = styled(FontAwesomeIcon)`
   ${props => {
     const { theme } = props;
     return css`
-      color: ${theme.colors.blackSecondary};
+      color: ${theme.colors.gray};
       margin-right: 8px;
       height: 12px;
     `;
@@ -19,7 +19,7 @@ const StyledLabel = styled.label`
     return css`
       border-radius: 1px;
       margin: 5px 0px;
-      background-color: ${theme.colors.whiteSecondary};
+      background-color: ${theme.colors.gray_light};
       padding: 8px;
       display: flex;
       align-items: center;
@@ -30,11 +30,11 @@ const StyledLabel = styled.label`
       input {
         border: none;
         background-color: transparent;
-        color: ${theme.colors.blackSecondary};
+        color: ${theme.colors.gray};
         font-size: 14px;
         flex: 1;
         &::placeholder {
-          color: ${theme.colors.blackSecondary};
+          color: ${theme.colors.gray};
           font-size: 14px;
         }
         &:focus {

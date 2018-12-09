@@ -27,8 +27,8 @@ const TabButton = styled(Button)`
       }
       ${!props.isActive &&
         `
-				background-color: ${theme.colors.whiteSecondary};
-        color: ${theme.colors.blackSecondary};
+				background-color: ${theme.colors.gray_light};
+        color: ${theme.colors.gray};
 			`}
       ${props.isActive &&
         `

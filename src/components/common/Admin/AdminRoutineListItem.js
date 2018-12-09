@@ -10,7 +10,7 @@ import {
   ListItemSessions,
   DeleteButton
 } from './AdminListItemElements';
-import { AdminContext } from '../Contexts/AdminContext';
+import { AdminContext } from '../../contexts/AdminContext';
 import AdminModal from './AdminModal';
 import RoutineModalContent from './RoutineModalContent';
 import AdminModalButtons from './AdminModalButtons';
@@ -37,14 +37,7 @@ class AdminRoutineListItem extends Component {
   state = { editModalIsOpen: false, deleteModalIsOpen: false };
   static contextType = AdminContext;
   render() {
-    const {
-      name,
-      sessionLength,
-      currentSession,
-      workouts,
-      routineId,
-      onClick
-    } = this.props;
+    const { name, sessionLength, currentSession, workouts, routineId, onClick } = this.props;
     const initialRoutine = {
       name,
       sessionLength,
@@ -56,12 +49,8 @@ class AdminRoutineListItem extends Component {
         <Container>
           <BlockContainer>
             <ListItemBlock name="Name:" value={name} />
-            <EditButton
-              onClick={() => this.setState({ editModalIsOpen: true })}
-            />
-            <DeleteButton
-              onClick={() => this.setState({ deleteModalIsOpen: true })}
-            />
+            <EditButton onClick={() => this.setState({ editModalIsOpen: true })} />
+            <DeleteButton onClick={() => this.setState({ deleteModalIsOpen: true })} />
           </BlockContainer>
           <BlockContainer>
             <ListItemSessions name="# of Sessions" value={sessionLength} />
@@ -74,13 +63,12 @@ class AdminRoutineListItem extends Component {
               type="edit"
               closeModal={() => this.setState({ editModalIsOpen: false })}
               initialRoutine={initialRoutine}
-              routineId={routineId} />
+              routineId={routineId}
+            />
           </AdminModal>
         )}
         {this.state.deleteModalIsOpen && (
-          <AdminModal
-            title="Delete Routine"
-            text="Are you sure you want to delete this routine?">
+          <AdminModal title="Delete Routine" text="Are you sure you want to delete this routine?">
             <AdminModalButtons
               onCancelClick={() => this.setState({ deleteModalIsOpen: false })}
               onActionClick={() => {

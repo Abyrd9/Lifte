@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import Modal from '../Modal';
-import AdminContextComponent from '../Contexts/AdminContext';
+import AdminContextComponent from '../../contexts/AdminContext';
 
 const Title = styled.h1`
   ${props => {
@@ -20,7 +20,7 @@ const Title = styled.h1`
       }
       & ~ p {
         ${theme.font(14, 400)};
-        color: ${theme.colors.blackSecondary};
+        color: ${theme.colors.gray};
         text-align: ${props.isCentered ? 'center' : 'left'};
       }
     `;

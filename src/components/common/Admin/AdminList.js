@@ -6,8 +6,8 @@ import {
   RoutineWorkoutList,
   RoutineWorkoutListItem
 } from './AdminListItemElements';
-import WorkoutsListener from '../Contexts/WorkoutsListener';
-import RoutinesListener from '../Contexts/RoutinesListener';
+import WorkoutsListener from '../../contexts//WorkoutsListener';
+import RoutinesListener from '../../contexts//RoutinesListener';
 
 class AdminWorkoutList extends Component {
   render() {

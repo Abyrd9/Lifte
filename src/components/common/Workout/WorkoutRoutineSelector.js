@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
 import Dropdown from '../Dropdown';
-import { AdminContext } from '../Contexts/AdminContext';
-import RoutinesListener from '../Contexts/RoutinesListener';
+import RoutinesListener from '../../contexts//RoutinesListener';
 
 class WorkoutRoutineSelector extends Component {
   render() {
@@ -14,9 +13,7 @@ class WorkoutRoutineSelector extends Component {
           <RoutinesListener>
             {list =>
               list.routines.map(routine => (
-                <button onClick={() => this.props.onClick(routine)}>
-                  {routine.name}
-                </button>
+                <button onClick={() => this.props.onClick(routine)}>{routine.name}</button>
               ))
             }
           </RoutinesListener>

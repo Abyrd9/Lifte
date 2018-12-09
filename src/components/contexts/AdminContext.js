@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
-import Keygen from '../../../helpers/Keygen';
+import Keygen from '../../helpers/Keygen';
 
 export const AdminContext = React.createContext('Admin');
 

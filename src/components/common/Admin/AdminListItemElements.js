@@ -48,7 +48,7 @@ const ListItemBlockStyled = styled.div`
     return css`
       h2 {
         ${theme.font(10, 400)};
-        color: ${theme.colors.blackSecondary};
+        color: ${theme.colors.gray};
       }
       p {
         ${theme.font(18, 700)};
@@ -57,7 +57,7 @@ const ListItemBlockStyled = styled.div`
       & ~ span {
         height: 25px;
         width: 2px;
-        background-color: ${theme.colors.whiteSecondary};
+        background-color: ${theme.colors.gray_light};
         margin: 0px 8px;
       }
     `;
@@ -80,7 +80,7 @@ const ListItemSetsRepsStyled = styled.div`
     return css`
       h2 {
         ${theme.font(10, 400)};
-        color: ${theme.colors.blackSecondary};
+        color: ${theme.colors.gray};
       }
       p {
         ${theme.font(18, 700)};
@@ -89,7 +89,7 @@ const ListItemSetsRepsStyled = styled.div`
       & ~ span {
         height: 25px;
         width: 2px;
-        background-color: ${theme.colors.whiteSecondary};
+        background-color: ${theme.colors.gray_light};
         margin: 0px 8px;
       }
     `;
@@ -114,7 +114,7 @@ const ListItemSessionsStyled = styled.div`
     return css`
       h2 {
         ${theme.font(10, 400)};
-        color: ${theme.colors.blackSecondary};
+        color: ${theme.colors.gray};
         span {
           margin-left: 5px;
           ${theme.font(16, 700)};
@@ -176,7 +176,7 @@ const RoutineWorkoutListStyled = styled.div`
   ${props => {
     const { theme } = props;
     return css`
-      background-color: ${theme.colors.whiteSecondary};
+      background-color: ${theme.colors.gray_light};
       padding: 8px;
       p {
         ${theme.font(12, 400)};
@@ -212,13 +212,13 @@ const RoutineWorkoutListItemStyled = styled.div`
       span {
         width: 1px;
         height: 15px;
-        background-color: ${theme.colors.blackSecondary};
+        background-color: ${theme.colors.gray};
         margin: 0px 5px;
         align-self: center;
       }
       p {
         ${theme.font(12, 400)};
-        color: ${theme.colors.blackSecondary};
+        color: ${theme.colors.gray};
       }
     `;
   }}

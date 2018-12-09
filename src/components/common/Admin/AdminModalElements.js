@@ -19,7 +19,7 @@ const NameInputStyled = styled.div`
       margin: 8px 0px;
       h2 {
         ${theme.font(14, 700)};
-        color: ${theme.colors.blackSecondary};
+        color: ${theme.colors.gray};
         text-align: left;
       }
       input {
@@ -28,12 +28,12 @@ const NameInputStyled = styled.div`
         color: ${theme.colors.black};
         font-size: 16px;
         font-weight: 600;
-        border-bottom: 2px solid ${theme.colors.blackSecondary};
+        border-bottom: 2px solid ${theme.colors.gray};
         width: 100%;
         margin: 5px 0px;
         padding-bottom: 3px;
         &::placeholder {
-          color: ${theme.colors.whiteSecondary};
+          color: ${theme.colors.gray_light};
           font-size: 16px;
         }
         &:focus {
@@ -44,14 +44,7 @@ const NameInputStyled = styled.div`
   }}
 `;
 
-export const NameInput = ({
-  title,
-  value,
-  type,
-  hasValue,
-  placeholder,
-  onChange
-}) => (
+export const NameInput = ({ title, value, type, hasValue, placeholder, onChange }) => (
   <NameInputStyled>
     <h2>{title}</h2>
     <input
@@ -71,7 +64,7 @@ const NumberBlockStyled = styled.div`
       margin: 8px 0px;
       h2 {
         ${theme.font(14, 700)};
-        color: ${theme.colors.blackSecondary};
+        color: ${theme.colors.gray};
         text-align: left;
       }
       input {
@@ -83,11 +76,11 @@ const NumberBlockStyled = styled.div`
         font-weight: 600;
         max-width: 30px;
         max-height: 18px;
-        border-bottom: 2px solid ${theme.colors.blackSecondary};
+        border-bottom: 2px solid ${theme.colors.gray};
         margin: 5px 0px;
         padding-bottom: 3px;
         &::placeholder {
-          color: ${theme.colors.whiteSecondary};
+          color: ${theme.colors.gray_light};
           font-size: 16px;
         }
         &:focus {
@@ -98,14 +91,7 @@ const NumberBlockStyled = styled.div`
   }}
 `;
 
-export const NumberBlock = ({
-  title,
-  value,
-  type,
-  hasValue,
-  placeholder,
-  onChange
-}) => (
+export const NumberBlock = ({ title, value, type, hasValue, placeholder, onChange }) => (
   <NumberBlockStyled>
     <h2>{title}</h2>
     <input
@@ -125,7 +111,7 @@ const NumberSetsRepsStyled = styled.div`
       margin: 8px 0px;
       h2 {
         ${theme.font(14, 700)};
-        color: ${theme.colors.blackSecondary};
+        color: ${theme.colors.gray};
         text-align: left;
       }
       div {
@@ -138,11 +124,11 @@ const NumberSetsRepsStyled = styled.div`
           font-weight: 600;
           max-width: 30px;
           max-height: 18px;
-          border-bottom: 2px solid ${theme.colors.blackSecondary};
+          border-bottom: 2px solid ${theme.colors.gray};
           margin: 5px 0px;
           padding-bottom: 3px;
           &::placeholder {
-            color: ${theme.colors.whiteSecondary};
+            color: ${theme.colors.gray_light};
             font-size: 16px;
           }
           &:focus {
@@ -158,7 +144,7 @@ const Icon = styled(FontAwesomeIcon)`
   ${props => {
     const { theme } = props;
     return css`
-      color: ${theme.colors.blackSecondary};
+      color: ${theme.colors.gray};
       margin: 0px 8px;
       height: 12px;
     `;
@@ -205,7 +191,7 @@ const RoutineWorkoutListItemStyled = styled.div`
     return css`
       ${theme.font(14, 700)};
       border-radius: 50px;
-      background-color: ${theme.colors.whiteSecondary};
+      background-color: ${theme.colors.gray_light};
       color: ${theme.colors.black};
       display: flex;
       justify-content: center;

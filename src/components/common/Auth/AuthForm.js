@@ -21,7 +21,7 @@ const AuthFormContainer = styled.div`
       box-shadow: ${theme.shadow};
       p {
         font-size: 14px;
-        color: ${theme.colors.blackSecondary};
+        color: ${theme.colors.gray};
         margin-bottom: 5px;
       }
     `;

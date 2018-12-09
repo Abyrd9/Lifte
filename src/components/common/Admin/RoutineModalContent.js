@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { AdminContext } from '../Contexts/AdminContext';
+import { AdminContext } from '../../contexts//AdminContext';
 import {
   NameInput,
   NumberBlock,
@@ -11,7 +11,7 @@ import {
 import Dropdown from '../Dropdown';
 import { Divider } from '../Layout';
 import AdminModalButtons from './AdminModalButtons';
-import WorkoutsListener from '../Contexts/WorkoutsListener';
+import WorkoutsListener from '../../contexts//WorkoutsListener';
 
 const Container = styled.div`
   ${props => {

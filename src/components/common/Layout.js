@@ -48,9 +48,7 @@ export const Divider = styled.div`
       width: ${props.isHalf ? '50%' : '100%'};
       margin: 5px auto;
       height: 1px;
-      background-color: ${props.isDarker
-        ? theme.colors.blackSecondary
-        : theme.colors.whiteSecondary};
+      background-color: ${props.isDarker ? theme.colors.gray : theme.colors.gray_light};
     `;
   }}
 `;
