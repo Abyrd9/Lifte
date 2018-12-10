@@ -1,21 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Icon = styled(FontAwesomeIcon)`
-  ${props => {
-    const { theme } = props;
-    return css`
-      color: ${theme.colors.gray};
-      margin-right: 8px;
-      height: 16px;
-      max-width: 15px;
-    `;
-  }}
-`;
-
-const DropdownButton = styled.button`
+export const DropdownButton = styled.button`
   ${props => {
     const { theme } = props;
     return css`
@@ -32,7 +18,7 @@ const DropdownButton = styled.button`
   }}
 `;
 
-const DropdownList = styled.div`
+export const DropdownList = styled.div`
   ${props => {
     const { theme } = props;
     return css`
@@ -49,12 +35,12 @@ const DropdownList = styled.div`
       transform: translateY(-5px);
       opacity: 0;
       max-height: 250px;
-      overflow: scroll;
+      overflow-y: scroll;
       button {
         width: 100%;
         display: block;
         text-align: left;
-        padding: 10px;
+        padding: 15px 10px;
         border-bottom: 1px solid ${theme.colors.gray_light};
         color: ${theme.colors.black};
         ${theme.font(14, 400)};
@@ -73,24 +59,14 @@ const DropdownList = styled.div`
   }}
 `;
 
-class Dropdown extends Component {
-  state = {
-    isOpen: false
-  };
-  render() {
-    const { placeholder, value, children } = this.props;
-    const { isOpen } = this.state;
-    return (
-      <React.Fragment>
-        <DropdownButton onClick={() => this.setState({ isOpen: !isOpen })}>
-          {!!value && value.length > 0 ? value : placeholder} <Icon icon="caret-down" size="5x" />
-          <DropdownList isOpen={isOpen}>{children}</DropdownList>
-        </DropdownButton>
-      </React.Fragment>
-    );
-  }
-}
-
-Dropdown.propTypes = {};
-
-export default Dropdown;
+export const DropdownIcon = styled(FontAwesomeIcon)`
+  ${props => {
+    const { theme } = props;
+    return css`
+      color: ${theme.colors.gray};
+      margin-right: 8px;
+      height: 16px;
+      max-width: 15px;
+    `;
+  }}
+`;

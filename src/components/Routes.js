@@ -56,7 +56,6 @@ class Routes extends Component {
                   component={Admin}
                   path="/admin"
                 />
-                <span id="modal" />
               </React.Fragment>
             </Router>
           );

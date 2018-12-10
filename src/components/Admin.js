@@ -5,13 +5,14 @@ import { Background, Container, Divider } from './common/Layout';
 import Header from './common/Header';
 import AdminTabs from './common/Admin/AdminTabs';
 import AdminAddButton from './common/Admin/AdminAddButton';
-import AdminModal from './common/Admin/AdminModal';
 import AdminTitle from './common/Admin/AdminTitle';
 import AdminList from './common/Admin/AdminList';
 import AdminContextComponent from './contexts/AdminContext';
 import ModalContentWorkout from './common/ModalContentWorkout/ModalContentWorkout';
-import RoutineModalContent from './common/Admin/RoutineModalContent';
+import ModalContentRoutine from './common/ModalContentRoutine/ModalContentRoutine';
 import AdminModalButtons from './common/Admin/AdminModalButtons';
+
+import Modal from './common/Modal/Modal';
 
 class Admin extends Component {
   state = {
@@ -42,20 +43,14 @@ class Admin extends Component {
         {this.state.modalIsOpen && (
           <React.Fragment>
             {this.state.currentTab === 'routines' && (
-              <AdminModal title="Create New Routine">
-                <RoutineModalContent
-                  type="create"
-                  closeModal={() => this.setState({ modalIsOpen: false })}
-                />
-              </AdminModal>
+              <Modal>
+                <ModalContentRoutine closeModal={() => this.setState({ modalIsOpen: false })} />
+              </Modal>
             )}
             {this.state.currentTab === 'workouts' && (
-              <AdminModal title="Create New Workout">
-                <ModalContentWorkout
-                  type="create"
-                  closeModal={() => this.setState({ modalIsOpen: false })}
-                />
-              </AdminModal>
+              <Modal>
+                <ModalContentWorkout closeModal={() => this.setState({ modalIsOpen: false })} />
+              </Modal>
             )}
           </React.Fragment>
         )}

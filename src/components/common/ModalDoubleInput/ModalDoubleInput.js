@@ -10,14 +10,25 @@ const ModalInput = ({
   secondValue,
   onChangeFirstValue,
   onChangeSecondValue,
-  affixedText
+  affixedText,
+  type
 }) => (
   <ModalDoubleInputContainer hasContent={firstValue.length > 0 || secondValue.length > 0}>
     <h3>{title}</h3>
     <label>
-      <input value={firstValue} onChange={onChangeFirstValue} placeholder={placeholder} />
+      <input
+        value={firstValue}
+        onChange={onChangeFirstValue}
+        placeholder={placeholder}
+        type={type}
+      />
       <span>{divider}</span>
-      <input value={secondValue} onChange={onChangeSecondValue} placeholder={placeholder} />
+      <input
+        value={secondValue}
+        onChange={onChangeSecondValue}
+        placeholder={placeholder}
+        type={type}
+      />
       {affixedText && <p>{affixedText}</p>}
     </label>
   </ModalDoubleInputContainer>
@@ -31,7 +42,8 @@ ModalInput.propTypes = {
   secondValue: PropTypes.string.isRequired,
   onChangeFirstValue: PropTypes.func.isRequired,
   onChangeSecondValue: PropTypes.func.isRequired,
-  affixedText: PropTypes.string
+  affixedText: PropTypes.string,
+  type: PropTypes.string
 };
 
 export default ModalInput;

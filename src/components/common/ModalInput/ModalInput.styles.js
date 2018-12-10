@@ -4,12 +4,13 @@ export const ModalInputContainer = styled.div`
   ${props => {
     const { theme } = props;
     return css`
-      width: 100%;
+      width: ${props.isWeight ? 'auto' : '100%'};
       margin: 10px 0px;
       h3 {
         ${theme.font(14, 700)};
         color: ${theme.colors.gray};
         text-align: left;
+        margin-bottom: 3px;
       }
       label {
         width: 100%;
@@ -17,12 +18,17 @@ export const ModalInputContainer = styled.div`
         align-items: flex-end;
         input {
           flex: 1;
-          ${theme.font(16, 400)};
+          ${theme.font(18, 400)};
           color: ${theme.colors.black};
           background-color: transparent;
           border: none;
           border-bottom: 1px solid ${theme.colors.gray};
-          padding-bottom: 3px;
+          padding-bottom: 2px;
+          ${props.isWeight &&
+            `
+						padding-left: 3px;
+						max-width: 30px;
+					`}
           &:placeholder {
             color: ${theme.colors.gray_light};
           }
@@ -33,6 +39,7 @@ export const ModalInputContainer = styled.div`
         p {
           ${theme.font(16, 400)};
           color: ${theme.colors.gray};
+          margin-left: 3px;
         }
       }
     `;

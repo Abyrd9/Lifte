@@ -11,9 +11,10 @@ import {
   DeleteButton
 } from './AdminListItemElements';
 import { AdminContext } from '../../contexts/AdminContext';
-import AdminModal from './AdminModal';
 import RoutineModalContent from './RoutineModalContent';
 import AdminModalButtons from './AdminModalButtons';
+
+import Modal from '../Modal/Modal';
 
 const Icon = styled(FontAwesomeIcon)`
   ${props => {
@@ -58,17 +59,17 @@ class AdminRoutineListItem extends Component {
           {this.props.children}
         </Container>
         {this.state.editModalIsOpen && (
-          <AdminModal>
+          <Modal>
             <RoutineModalContent
               type="edit"
               closeModal={() => this.setState({ editModalIsOpen: false })}
               initialRoutine={initialRoutine}
               routineId={routineId}
             />
-          </AdminModal>
+          </Modal>
         )}
         {this.state.deleteModalIsOpen && (
-          <AdminModal title="Delete Routine" text="Are you sure you want to delete this routine?">
+          <Modal>
             <AdminModalButtons
               onCancelClick={() => this.setState({ deleteModalIsOpen: false })}
               onActionClick={() => {
@@ -78,7 +79,7 @@ class AdminRoutineListItem extends Component {
               disabled={false}
               buttonText="Delete"
             />
-          </AdminModal>
+          </Modal>
         )}
       </React.Fragment>
     );

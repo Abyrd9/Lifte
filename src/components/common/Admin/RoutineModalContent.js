@@ -8,7 +8,7 @@ import {
   RoutineWorkoutList,
   RoutineWorkoutListItem
 } from './AdminModalElements';
-import Dropdown from '../Dropdown';
+import Dropdown from '../Dropdown/Dropdown';
 import { Divider } from '../Layout';
 import AdminModalButtons from './AdminModalButtons';
 import WorkoutsListener from '../../contexts//WorkoutsListener';
@@ -31,12 +31,7 @@ class RoutineModalContent extends Component {
 
   componentDidMount() {
     if (!!this.props.initialRoutine) {
-      const {
-        name,
-        sessionLength,
-        currentSession,
-        workouts
-      } = this.props.initialRoutine;
+      const { name, sessionLength, currentSession, workouts } = this.props.initialRoutine;
       this.setState({ name, sessionLength, currentSession, workouts });
     }
   }
@@ -52,9 +47,7 @@ class RoutineModalContent extends Component {
       key: workout.key,
       sessions: []
     };
-    let weight = parseInt(
-      workout.startingWeight - parseInt(workout.weightToAdd)
-    );
+    let weight = parseInt(workout.startingWeight - parseInt(workout.weightToAdd));
     for (let i = 0; i < this.state.sessionLength; i++) {
       weight = weight + parseInt(workout.weightToAdd);
       routineWorkout.sessions.push({
@@ -135,8 +128,7 @@ class RoutineModalContent extends Component {
             <WorkoutsListener>
               {list =>
                 list.workouts.map(workout => (
-                  <button
-                    onClick={() => this.handleCreateRoutineWorkout(workout)}>
+                  <button onClick={() => this.handleCreateRoutineWorkout(workout)}>
                     {workout.name}
                   </button>
                 ))

@@ -8,6 +8,7 @@ export const ModalButtonListContainer = styled.div`
       display: flex;
       justify-content: space-evenly;
       align-items: center;
+      margin-top: 15px;
       button {
         ${theme.font(14, 400)};
         color: ${theme.colors.white};

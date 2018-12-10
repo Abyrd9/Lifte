@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
-import Dropdown from '../Dropdown';
+import Dropdown from '../Dropdown/Dropdown';
 import RoutinesListener from '../../contexts//RoutinesListener';
 
 class WorkoutRoutineSelector extends Component {

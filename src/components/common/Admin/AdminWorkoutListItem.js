@@ -10,9 +10,10 @@ import {
   DeleteButton
 } from './AdminListItemElements';
 import { AdminContext } from '../../contexts//AdminContext';
-import AdminModal from './AdminModal';
 import ModalContentWorkout from '../ModalContentWorkout/ModalContentWorkout';
 import AdminModalButtons from './AdminModalButtons';
+
+import Modal from '../Modal/Modal';
 
 const Container = styled.div`
   ${props => {
@@ -51,17 +52,17 @@ class AdminWorkoutListItem extends Component {
           <Divider />
         </Container>
         {this.state.editModalIsOpen && (
-          <AdminModal title="Edit Workout">
+          <Modal title="Edit Workout">
             <ModalContentWorkout
               type="edit"
               closeModal={() => this.setState({ editModalIsOpen: false })}
               initialWorkout={initialWorkout}
               workoutId={workoutId}
             />
-          </AdminModal>
+          </Modal>
         )}
         {this.state.deleteModalIsOpen && (
-          <AdminModal title="Delete Workout" text="Are you sure you want to delete this workout?">
+          <Modal>
             <AdminModalButtons
               onCancelClick={() => this.setState({ deleteModalIsOpen: false })}
               onActionClick={() => {
@@ -71,7 +72,7 @@ class AdminWorkoutListItem extends Component {
               disabled={false}
               buttonText="Delete"
             />
-          </AdminModal>
+          </Modal>
         )}
       </React.Fragment>
     );
