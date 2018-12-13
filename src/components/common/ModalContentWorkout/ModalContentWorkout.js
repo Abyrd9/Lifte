@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import produce from 'immer';
 import PropTypes from 'prop-types';
-import { AdminContext } from '../../contexts/AdminContext';
+import * as api from '../../../helpers/api';
 import {
   ModalContentWorkoutContainer,
   ModalContentInputBlock,
@@ -13,7 +13,6 @@ import ModalDoubleInput from '../ModalDoubleInput/ModalDoubleInput';
 import ModalButtonList from '../ModalButtonList/ModalButtonList';
 
 class ModalContentWorkout extends Component {
-  static contextType = AdminContext;
   state = {
     workout: {
       name: '',
@@ -32,16 +31,18 @@ class ModalContentWorkout extends Component {
   componentDidMount() {
     const { initialWorkout } = this.props;
     if (initialWorkout) {
+      const { name, startingWeight, weightToAdd, sets, reps, time, workoutId } = initialWorkout;
+      console.log(initialWorkout);
       this.setState(
         produce(draft => {
-          draft.workout.name = initialWorkout.name;
-          draft.workout.startingWeight = initialWorkout.startingWeight;
-          draft.workout.weightToAdd = initialWorkout.weightToAdd;
-          draft.workout.sets = initialWorkout.sets;
-          draft.workout.reps = initialWorkout.reps;
-          draft.workout.time.minutes = initialWorkout.time.minutes;
-          draft.workout.time.seconds = initialWorkout.time.seconds;
-          draft.workoutId = initialWorkout.workoutId;
+          draft.workout.name = name;
+          draft.workout.startingWeight = startingWeight;
+          draft.workout.weightToAdd = weightToAdd;
+          draft.workout.sets = sets;
+          draft.workout.reps = reps;
+          draft.workout.time.minutes = !!time.minutes ? time.minutes : '';
+          draft.workout.time.seconds = !!time.seconds ? time.seconds : '';
+          draft.workoutId = workoutId;
         })
       );
     }
@@ -120,10 +121,10 @@ class ModalContentWorkout extends Component {
             title="Starting Weight:"
             placeholder="0"
             value={startingWeight}
-            onChange={e => this.handleChangeValue(e.target.value, 'startingWeight', 3)}
+            onChange={e => this.handleChangeValue(e.target.value, 'startingWeight', 4)}
             affixedText="lbs"
             type="number"
-            isWeight
+            maxThree
           />
           <ModalContentDivider />
           <ModalInput
@@ -132,7 +133,7 @@ class ModalContentWorkout extends Component {
             value={weightToAdd}
             onChange={e => this.handleChangeValue(e.target.value, 'weightToAdd', 3)}
             affixedText="lbs"
-            isWeight
+            maxTwo
           />
         </ModalContentInputBlock>
         <ModalContentInputBlock>
@@ -163,9 +164,9 @@ class ModalContentWorkout extends Component {
           onCancel={closeModal}
           onSave={() => {
             if (!!workoutId && workoutId.length > 0) {
-              this.context.handleUpdateWorkout(workoutId, this.state.workout);
+              api.handleUpdateWorkout(workoutId, this.state.workout);
             } else {
-              this.context.handleCreateWorkout(this.state.workout);
+              api.handleCreateWorkout(this.state.workout);
             }
             closeModal();
           }}
@@ -177,6 +178,7 @@ class ModalContentWorkout extends Component {
 
 ModalContentWorkout.propTypes = {
   initialWorkout: PropTypes.oneOfType({
+    workoutId: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     startingWeight: PropTypes.string.isRequired,
     weightToAdd: PropTypes.string.isRequired,

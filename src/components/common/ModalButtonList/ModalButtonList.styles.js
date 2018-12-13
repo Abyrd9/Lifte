@@ -6,7 +6,7 @@ export const ModalButtonListContainer = styled.div`
     return css`
       width: 100%;
       display: flex;
-      justify-content: space-evenly;
+      justify-content: center;
       align-items: center;
       margin-top: 15px;
       button {
@@ -21,8 +21,9 @@ export const ModalButtonListContainer = styled.div`
         background-color: ${theme.colors.primary};
         border-radius: 3px;
         box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.23);
-        &:first-of-type: {
-          margin-right: 15px;
+        &:nth-of-type(2) {
+          margin-left: 20px;
+          ${props.isDelete && `background-color: ${theme.colors.error};`}
         }
         &:disabled {
           background-color: ${theme.colors.gray_light};

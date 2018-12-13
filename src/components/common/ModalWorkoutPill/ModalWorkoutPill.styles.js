@@ -13,7 +13,7 @@ export const ModalWorkoutPillContainer = styled.div`
       justify-content: center;
       align-items: center;
       padding: 8px 10px;
-      margin: 3px;
+      margin: 5px;
     `;
   }}
 `;

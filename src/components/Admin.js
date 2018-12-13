@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import produce from 'immer';
-import { Background, Container, Divider } from './common/Layout';
-import Header from './common/Header';
-import AdminTabs from './common/Admin/AdminTabs';
-import AdminAddButton from './common/Admin/AdminAddButton';
-import AdminTitle from './common/Admin/AdminTitle';
-import AdminList from './common/Admin/AdminList';
-import AdminContextComponent from './contexts/AdminContext';
+import { Background, Container, Divider } from './common/LayoutElements';
+import Header from './common/Header/Header';
+import PageTitle from './common/PageTitle/PageTitle';
+import GoalWeightListener from './contexts/GoalWeightListener';
+import AdminGoalWeight from './common/AdminGoalWeight/AdminGoalWeight';
+import AdminTabs from './common/AdminTabs/AdminTabs';
+import AdminAddButton from './common/AdminAddButton/AdminAddButton';
+import AdminWorkoutList from './common/AdminWorkoutList/AdminWorkoutList';
+import AdminRoutineList from './common/AdminRoutineList/AdminRoutineList';
 import ModalContentWorkout from './common/ModalContentWorkout/ModalContentWorkout';
 import ModalContentRoutine from './common/ModalContentRoutine/ModalContentRoutine';
-import AdminModalButtons from './common/Admin/AdminModalButtons';
 
 import Modal from './common/Modal/Modal';
 
@@ -18,38 +18,41 @@ class Admin extends Component {
   state = {
     currentTab: 'routines',
     changeTab: val => this.setState({ currentTab: val }),
-    modalIsOpen: false
+    adminModalOpen: false
   };
 
   render() {
+    const { currentTab, adminModalOpen, changeTab } = this.state;
     return (
       <Background>
         <Header hasBackButton />
-        <AdminContextComponent>
-          <Container>
-            <AdminTitle isHalf title="Admin" />
-            <AdminTabs currentTab={this.state.currentTab} changeTab={this.state.changeTab} />
-            <Divider />
-            <AdminAddButton
-              currentTab={this.state.currentTab}
-              onClick={() => this.setState({ modalIsOpen: true })}
-            />
-          </Container>
-          <Container>
-            <AdminTitle title={this.state.currentTab === 'routines' ? 'Routines' : 'Workouts'} />
-            <AdminList type={this.state.currentTab} />
-          </Container>
-        </AdminContextComponent>
-        {this.state.modalIsOpen && (
+        <Container>
+          <PageTitle title="Admin" />
+          <GoalWeightListener>
+            {({ weight }) => <AdminGoalWeight weight={weight} />}
+          </GoalWeightListener>
+          <AdminTabs currentTab={currentTab} changeTab={changeTab} />
+          <Divider />
+          <AdminAddButton
+            currentTab={currentTab}
+            onClick={() => this.setState({ adminModalOpen: true })}
+          />
+        </Container>
+        <Container>
+          <PageTitle title={currentTab === 'routines' ? 'Routines' : 'Workouts'} />
+          {currentTab === 'workouts' && <AdminWorkoutList />}
+          {currentTab === 'routines' && <AdminRoutineList />}
+        </Container>
+        {adminModalOpen && (
           <React.Fragment>
-            {this.state.currentTab === 'routines' && (
+            {currentTab === 'routines' && (
               <Modal>
-                <ModalContentRoutine closeModal={() => this.setState({ modalIsOpen: false })} />
+                <ModalContentRoutine closeModal={() => this.setState({ adminModalOpen: false })} />
               </Modal>
             )}
-            {this.state.currentTab === 'workouts' && (
+            {currentTab === 'workouts' && (
               <Modal>
-                <ModalContentWorkout closeModal={() => this.setState({ modalIsOpen: false })} />
+                <ModalContentWorkout closeModal={() => this.setState({ adminModalOpen: false })} />
               </Modal>
             )}
           </React.Fragment>

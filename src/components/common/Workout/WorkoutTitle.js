@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import firebase from 'firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Divider } from '../Layout';
+import { Divider } from '../LayoutElements';
 import { AdminContext } from '../../contexts/AdminContext';
 
 const Icon = styled(FontAwesomeIcon)`

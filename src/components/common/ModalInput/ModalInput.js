@@ -2,8 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ModalInputContainer } from './ModalInput.styles';
 
-const ModalInput = ({ title, placeholder, value, onChange, affixedText, type, isWeight }) => (
-  <ModalInputContainer hasContent={!!value && value.length > 0} isWeight={isWeight}>
+const ModalInput = ({
+  title,
+  placeholder,
+  value,
+  onChange,
+  affixedText,
+  type,
+  maxTwo,
+  maxThree
+}) => (
+  <ModalInputContainer hasContent={!!value && value.length > 0} maxTwo={maxTwo} maxThree={maxThree}>
     <h3>{title}</h3>
     <label>
       <input value={value} onChange={onChange} placeholder={placeholder} type={type} />
@@ -19,7 +28,8 @@ ModalInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   affixedText: PropTypes.string,
   type: PropTypes.string,
-  isWeight: PropTypes.bool
+  maxTwo: PropTypes.bool,
+  maxThree: PropTypes.bool
 };
 
 export default ModalInput;

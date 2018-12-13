@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Auth from './Auth';
 import AuthContext from './contexts/AuthContext';
-import Workout from './Workout';
+import Home from './Home';
 import Admin from './Admin';
 
 const AuthenticatedRoute = ({ isAuthenticated, component: Component, ...rest }) => (
@@ -24,7 +24,7 @@ const NonAuthenticatedRoute = ({ isAuthenticated, component: Component, ...rest 
     {...rest}
     render={props =>
       isAuthenticated ? (
-        <Redirect to={{ pathname: '/workout', state: { from: props.location } }} />
+        <Redirect to={{ pathname: '/home', state: { from: props.location } }} />
       ) : (
         <Component {...props} />
       )
@@ -48,8 +48,8 @@ class Routes extends Component {
                 />
                 <AuthenticatedRoute
                   isAuthenticated={auth.isAuthenticated}
-                  component={Workout}
-                  path="/workout"
+                  component={Home}
+                  path="/home"
                 />
                 <AuthenticatedRoute
                   isAuthenticated={auth.isAuthenticated}

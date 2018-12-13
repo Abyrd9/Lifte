@@ -4,7 +4,7 @@ import { ModalButtonListContainer } from './ModalButtonList.styles';
 
 const ModalButtonList = ({ onCancel, onSave, onDelete, isDisabled, isDelete }) => {
   return (
-    <ModalButtonListContainer>
+    <ModalButtonListContainer isDelete>
       <button onClick={onCancel}>Cancel</button>
       {isDelete ? (
         <button onClick={onDelete}>Delete</button>

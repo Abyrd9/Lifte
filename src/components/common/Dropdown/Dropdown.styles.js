@@ -11,7 +11,7 @@ export const DropdownButton = styled.button`
       align-items: center;
       padding: 10px 8px;
       background-color: ${theme.colors.gray_light};
-      color: ${theme.colors.gray};
+      color: ${props.hasValue ? theme.colors.black : theme.colors.gray};
       ${theme.font(14, 400)};
       position: relative;
     `;

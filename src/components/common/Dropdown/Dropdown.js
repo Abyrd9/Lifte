@@ -11,7 +11,9 @@ class Dropdown extends Component {
     const { isOpen } = this.state;
     return (
       <React.Fragment>
-        <DropdownButton onClick={() => this.setState({ isOpen: !isOpen })}>
+        <DropdownButton
+          onClick={() => this.setState({ isOpen: !isOpen })}
+          hasValue={!!value && value.length > 0}>
           {!!value && value.length > 0 ? value : placeholder}{' '}
           <DropdownIcon icon="caret-down" size="5x" />
           <DropdownList isOpen={isOpen}>{children}</DropdownList>

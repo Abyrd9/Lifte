@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Background } from './common/Layout';
+import { Background } from './common/LayoutElements';
 import AuthContext from './contexts/AuthContext';
 import AuthLogoIcon from './common/Auth/AuthLogoIcon';
 import AuthForm from './common/Auth/AuthForm';

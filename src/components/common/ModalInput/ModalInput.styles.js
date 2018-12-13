@@ -24,6 +24,9 @@ export const ModalInputContainer = styled.div`
           border: none;
           border-bottom: 1px solid ${theme.colors.gray};
           padding-bottom: 2px;
+					padding-left: ${props.maxTwo || props.maxThree ? '3px' : '0px'};
+					${props.maxTwo && `max-width: 30px;`}
+					${props.maxThree && `max-width: 40px;`} 
           ${props.isWeight &&
             `
 						padding-left: 3px;
