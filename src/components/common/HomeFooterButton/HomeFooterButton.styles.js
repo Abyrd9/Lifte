@@ -1,8 +1,7 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Icon = styled(FontAwesomeIcon)`
+export const Icon = styled(FontAwesomeIcon)`
   ${props => {
     const { theme } = props;
     return css`
@@ -11,7 +10,7 @@ const Icon = styled(FontAwesomeIcon)`
   }}
 `;
 
-const Button = styled.button`
+export const AddButton = styled.button`
   ${props => {
     const { theme } = props;
     return css`
@@ -24,16 +23,19 @@ const Button = styled.button`
       align-items: center;
       background-color: ${theme.colors.primary};
       box-shadow: ${theme.shadow};
+      z-index: ${theme.zIndex.top};
     `;
   }}
 `;
 
-const FooterButton = ({ onClick, disabled, icon, size, className }) => {
-  return (
-    <Button disabled={disabled} className={className} onClick={onClick}>
-      <Icon icon={icon} size={size} />
-    </Button>
-  );
-};
-
-export default FooterButton;
+export const Container = styled.div`
+  box-sizing: border-box;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 10px;
+`;

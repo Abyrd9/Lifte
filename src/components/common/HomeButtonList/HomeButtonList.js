@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import * as api from '../../../helpers/api';
 import { HomeButtonListContainer, HomeButtonListItem } from './HomeButtonList.styles';
 
-const HomeButtonList = ({ routine }) => {
+const HomeButtonList = ({ routine, clearActiveWorkoutId }) => {
   const updateRoutineCurrentSession = index => {
+    clearActiveWorkoutId();
     const newRoutine = JSON.parse(JSON.stringify(routine));
     newRoutine.currentSession = index;
-    console.log(newRoutine);
     api.handleUpdateRoutine(newRoutine.routineId, newRoutine);
   };
 
@@ -54,7 +54,8 @@ HomeButtonList.propTypes = {
         }).isRequired
       }
     ]).isRequired
-  }).isRequired
+  }).isRequired,
+  clearActiveWorkoutId: PropTypes.func.isRequired
 };
 
 export default HomeButtonList;

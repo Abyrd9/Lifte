@@ -4,7 +4,7 @@ export const ModalInputContainer = styled.div`
   ${props => {
     const { theme } = props;
     return css`
-      width: ${props.isWeight ? 'auto' : '100%'};
+      width: ${props.maxTwo || props.maxThree ? 'auto' : '100%'};
       margin: 10px 0px;
       h3 {
         ${theme.font(14, 700)};

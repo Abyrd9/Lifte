@@ -11,6 +11,7 @@ export const Background = styled.div`
       padding: 55px 20px 0px 20px;
       overflow: scroll;
       z-index: ${theme.zIndex.default};
+      margin-bottom: 60px;
       &:before {
         position: absolute;
         content: '';
@@ -46,7 +47,7 @@ export const Divider = styled.div`
     const { theme } = props;
     return css`
       width: ${props.isHalf ? '50%' : '100%'};
-      margin: 5px auto;
+      margin: 10px auto;
       height: 1px;
       background-color: ${props.isDarker ? theme.colors.gray : theme.colors.gray_light};
     `;

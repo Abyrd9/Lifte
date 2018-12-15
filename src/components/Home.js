@@ -1,15 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import firebase from 'firebase';
 import { Background, Container, Divider } from './common/LayoutElements';
-import WorkoutTitle from './common/Workout/WorkoutTitle';
-import FooterButtonsContainer from './common/FooterButtonsContainer';
-import RoutineValueListener from './contexts/RoutineListener';
-import AdminContextComponent from './contexts/AdminContext';
-import WorkoutRoutineSelector from './common/Workout/WorkoutRoutineSelector';
-import WorkoutButtonList from './common/Workout/WorkoutButtonList';
-import WorkoutItem from './common/Workout/WorkoutItem';
-
-// New Components
 import Header from './common/Header/Header';
 import PageTitle from './common/PageTitle/PageTitle';
 import GoalWeightListener from './contexts/GoalWeightListener';
@@ -18,14 +8,17 @@ import RoutinesListener from './contexts/RoutinesListener';
 import Dropdown from './common/Dropdown/Dropdown';
 import RoutineListener from './contexts/RoutineListener';
 import HomeButtonList from './common/HomeButtonList/HomeButtonList';
+import HomeSessionItem from './common/HomeSessionItem/HomeSessionItem';
+import HomeFooterButton from './common/HomeFooterButton/HomeFooterButton';
 
 class Home extends Component {
   state = {
     isEditable: false,
-    currentRoutine: {}
+    currentRoutine: {},
+    currentActiveWorkoutId: ''
   };
   render() {
-    const { currentRoutine, isEditable } = this.state;
+    const { currentRoutine, currentActiveWorkoutId } = this.state;
     return (
       <Background hasContainer>
         <Header />
@@ -38,7 +31,12 @@ class Home extends Component {
 
         {!!currentRoutine && currentRoutine.hasOwnProperty('routineId') && (
           <RoutineListener routineId={currentRoutine.routineId}>
-            {({ routine }) => <HomeButtonList routine={routine} />}
+            {({ routine }) => (
+              <HomeButtonList
+                routine={routine}
+                clearActiveWorkoutId={() => this.setState({ currentActiveWorkoutId: '' })}
+              />
+            )}
           </RoutineListener>
         )}
 
@@ -66,72 +64,30 @@ class Home extends Component {
                 {({ routine }) =>
                   !!routine.workouts &&
                   routine.workouts.length > 0 &&
-                  routine.workouts.map(workout => <div>{workout.name}</div>)
+                  routine.workouts.map(workout => (
+                    <Fragment>
+                      <HomeSessionItem
+                        routineId={currentRoutine.routineId}
+                        workout={workout}
+                        isActive={workout.workoutId === currentActiveWorkoutId}
+                        setIsActive={() => {
+                          if (currentActiveWorkoutId === workout.workoutId) {
+                            this.setState({ currentActiveWorkoutId: '' });
+                          } else {
+                            this.setState({ currentActiveWorkoutId: workout.workoutId });
+                          }
+                        }}
+                        currentSessionIndex={routine.currentSession}
+                      />
+                      <Divider />
+                    </Fragment>
+                  ))
                 }
               </RoutineListener>
             </Fragment>
           )}
         </Container>
-
-        {/* <AdminContextComponent>
-          <Container>
-            <WorkoutTitle isEditable={isEditable} />
-          </Container>
-          {!!currentRoutine.key && (
-            <RoutineValueListener routineId={currentRoutine.key}>
-              {routine => {
-                if (!!routine.value) {
-                  return (
-                    <WorkoutButtonList
-                      routineId={routine.value.key}
-                      sessionLength={routine.value.sessionLength}
-                      currentSession={routine.value.currentSession + 1}
-                    />
-                  );
-                }
-                return null;
-              }}
-            </RoutineValueListener>
-          )}
-          <Container>
-            <WorkoutRoutineSelector
-              onClick={val => this.setState({ currentRoutine: val })}
-              name={currentRoutine.name}
-            />
-            {!!currentRoutine.key && (
-              <RoutineValueListener routineId={currentRoutine.key}>
-                {routine => {
-                  if (!!routine.value) {
-                    const { workouts, currentSession } = routine.value;
-                    const index = parseInt(currentSession);
-                    return (
-                      <React.Fragment>
-                        {workouts.map(workout => (
-                          <WorkoutItem
-                            key={workout.key}
-                            routineId={currentRoutine.key}
-                            workoutId={workout.key}
-                            name={workout.name}
-                            weight={workout.sessions[index].weight}
-                            sets={workout.sessions[index].sets}
-                            reps={workout.sessions[index].reps}
-                            isCompleted={workout.sessions[index].completed}
-                            currentSession={currentSession}
-                          />
-                        ))}
-                      </React.Fragment>
-                    );
-                  }
-                  return null;
-                }}
-              </RoutineValueListener>
-            )}
-          </Container>
-        </AdminContextComponent>
-        <FooterButtonsContainer
-          isEditable={isEditable}
-          onEditClick={() => this.setState({ isEditable: !isEditable })}
-        /> */}
+        <HomeFooterButton />
       </Background>
     );
   }

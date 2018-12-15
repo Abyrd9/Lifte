@@ -36,6 +36,7 @@ export const DropdownList = styled.div`
       opacity: 0;
       max-height: 250px;
       overflow-y: scroll;
+      z-index: ${theme.zIndex.top};
       button {
         width: 100%;
         display: block;

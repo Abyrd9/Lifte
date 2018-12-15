@@ -187,6 +187,32 @@ export const handleUpdateWorkoutInRoutines = async (userId, workoutId, newWorkou
   }
 };
 
+export const handleUpdateSessionInWorkout = async (routineId, workoutId, newWorkout) => {
+  const auth = firebase.auth();
+  if (!!auth.currentUser) {
+    const userId = auth.currentUser.uid;
+    try {
+      let workouts = await firebase
+        .database()
+        .ref(`/users/${userId}/routines/${routineId}/workouts/`)
+        .once('value');
+      workouts = workouts.val().map(workout => {
+        if (workout.workoutId === workoutId) {
+          workout = newWorkout;
+        }
+        return workout;
+      });
+      await firebase
+        .database()
+        .ref(`/users/${userId}/routines/${routineId}/workouts`)
+        .set(workouts);
+    } catch (err) {
+      console.warn('Unable to update routine.');
+      console.warn(err.code, err.message);
+    }
+  }
+};
+
 export const handleUpdateGoalWeight = async val => {
   const auth = firebase.auth();
   if (!!auth.currentUser) {

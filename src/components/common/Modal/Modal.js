@@ -33,7 +33,7 @@ class Modal extends Component {
   render() {
     const { isAppended } = this.state;
     const ModalContent = (
-      <ModalStyledBackdrop>
+      <ModalStyledBackdrop onClick={e => e.stopPropagation()}>
         <ModalStyledContent>{this.props.children}</ModalStyledContent>
       </ModalStyledBackdrop>
     );

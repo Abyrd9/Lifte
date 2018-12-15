@@ -15,7 +15,8 @@ import {
   faUser,
   faMinusCircle,
   faArrowLeft,
-  faCheckCircle
+  faCheckCircle,
+  faStopwatch
 } from '@fortawesome/free-solid-svg-icons';
 
 export const addIcons = () => {
@@ -35,6 +36,7 @@ export const addIcons = () => {
     faTimesCircle,
     faUser,
     faArrowLeft,
-    faCheckCircle
+    faCheckCircle,
+    faStopwatch
   );
 };
