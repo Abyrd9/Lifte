@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Logo from '../../../images/LifteLogo.png';
 
 const Container = styled.div`
   ${props => {
@@ -19,22 +19,16 @@ const Container = styled.div`
       right: 0;
       margin: 0 auto;
       box-shadow: ${theme.shadow};
-    `;
-  }}
-`;
-
-const Icon = styled(FontAwesomeIcon)`
-  ${props => {
-    const { theme } = props;
-    return css`
-      color: ${theme.colors.gray};
+      img {
+        height: 50px;
+      }
     `;
   }}
 `;
 
 const LogoIcon = ({}) => (
   <Container>
-    <Icon icon="dumbbell" size="2x" />
+    <img src={Logo} alt="Lifte Logo" />
   </Container>
 );
 
