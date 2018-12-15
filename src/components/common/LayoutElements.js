@@ -11,7 +11,7 @@ export const Background = styled.div`
       padding: 55px 20px 0px 20px;
       overflow: scroll;
       z-index: ${theme.zIndex.default};
-      margin-bottom: 60px;
+      padding-bottom: 60px;
       &:before {
         position: absolute;
         content: '';
