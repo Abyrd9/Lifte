@@ -20,6 +20,10 @@ class HomeSessionItemEdit extends Component {
     const { workout, currentSessionIndex, routineId } = this.props;
     let newWorkout = JSON.parse(JSON.stringify(workout));
     newWorkout.sessions[currentSessionIndex].completedSetsArr[index].completed = val;
+    newWorkout.sessions[currentSessionIndex].completed = newWorkout.sessions[
+      currentSessionIndex
+    ].completedSetsArr.every(item => item.completed);
+    console.log(newWorkout);
     api.handleUpdateSessionInWorkout(routineId, workout.workoutId, newWorkout);
   };
 
@@ -32,7 +36,6 @@ class HomeSessionItemEdit extends Component {
       sessions
     } = workout;
     const { reps, sets, weight, completedSetsArr } = sessions[currentSessionIndex];
-    console.log(completedSetsArr[0].completed);
     return (
       <Fragment>
         <HomeSessionItemEditContainer>

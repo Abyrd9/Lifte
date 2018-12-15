@@ -101,7 +101,6 @@ class ModalContentSession extends Component {
       sessions
     } = this.state;
     const { closeModal, currentSessionIndex } = this.props;
-    console.log(this.state);
     return (
       <ModalContentSessionContainer>
         {!!workoutId && workoutId.length > 0 && (

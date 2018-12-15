@@ -32,7 +32,6 @@ class ModalContentWorkout extends Component {
     const { initialWorkout } = this.props;
     if (initialWorkout) {
       const { name, startingWeight, weightToAdd, sets, reps, time, workoutId } = initialWorkout;
-      console.log(initialWorkout);
       this.setState(
         produce(draft => {
           draft.workout.name = name;

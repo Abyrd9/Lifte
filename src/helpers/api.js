@@ -166,10 +166,9 @@ export const handleUpdateWorkoutInRoutines = async (userId, workoutId, newWorkou
           });
         }
       });
-      console.log(routine[1]);
       return routine;
     });
-    console.log(routines);
+
     // turn the object.entries back into an object with the key and value pair
     routines = routines.reduce((acc, [key, value]) => {
       acc[key] = value;

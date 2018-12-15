@@ -27,7 +27,7 @@ export const HomeButtonListItem = styled.button`
       box-shadow: ${theme.shadow};
 			background-color: ${theme.colors.white};
 			color: ${theme.colors.gray};
-			${props.isCompleted &&
+			${props.isComplete &&
         css`
           background-color: ${theme.colors.secondary_light};
           color: ${theme.colors.gray};

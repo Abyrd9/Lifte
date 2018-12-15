@@ -10,7 +10,6 @@ import AdminItemEditButton from '../AdminItemEditButton/AdminItemEditButton';
 
 const AdminWorkoutItem = ({ workout, onEditClick, onDeleteClick }) => {
   const { name, sets, reps, startingWeight, weightToAdd, time } = workout;
-  console.log(workout);
   let minutes = !!time.minutes ? time.minutes : '00';
   let seconds = !!time.seconds ? time.seconds : '00';
   return (

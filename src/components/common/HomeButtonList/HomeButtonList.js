@@ -18,11 +18,7 @@ const HomeButtonList = ({ routine, clearActiveWorkoutId }) => {
     for (let i = 0; i < parseInt(sessionLength); i++) {
       let isComplete = false;
       if (!!workouts && workouts.length > 0) {
-        isComplete = workouts.every(workout => {
-          if (!!workout.sessions && !!workout.sessions[i]) {
-            return workout.sessions[i].completed;
-          }
-        });
+        isComplete = workouts.every(workout => workout.sessions[i].completed);
       }
       buttonList.push(
         <HomeButtonListItem

@@ -102,7 +102,6 @@ class ModalContentTimer extends Component {
         const { minutes, seconds } = this.state.countdown;
         let min = parseInt(minutes);
         let sec = parseInt(seconds);
-        console.log(min, sec);
         if (sec > 0) {
           // if seconds doesn't equal 0, subtract one
           sec = sec - 1;

@@ -51,25 +51,27 @@ export const CompletedIcon = styled.span`
   ${props => {
     const { theme } = props;
     return css`
-      height: 20px;
-      min-width: 20px;
+      height: 26px;
+      min-width: 26px;
       border-radius: 100%;
-      border: 2px solid ${theme.colors.gray};
+      border: 3px solid ${theme.colors.gray};
       background-color: ${theme.colors.white};
       position: relative;
       margin: 0px 5px 0px 20px;
       ${props.isCompleted &&
         css`
-          background-color: ${theme.colors.secondary};
+          border: 3px solid ${theme.colors.secondary};
+          background-color: transparent;
           &:after {
+            content: '';
             position: absolute;
-            top: 0;
-            bottom: 0;
+            top: calc(50% - 8px);
             left: 0;
             right: 0;
             margin: 0 auto;
-            height: 12px;
-            width: 12px;
+            height: 16px;
+            width: 16px;
+            border-radius: 100%;
             background-color: ${theme.colors.secondary};
           }
         `}
