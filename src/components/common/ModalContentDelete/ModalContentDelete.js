@@ -14,9 +14,10 @@ const ModalContentDelete = ({ closeModal, itemId, isWorkout }) => {
         onCancel={closeModal}
         onDelete={() => {
           if (isWorkout) {
-            api.handleDeleteRoutine(itemId);
-          } else {
+            console.log(isWorkout, itemId);
             api.handleDeleteWorkout(itemId);
+          } else {
+            api.handleDeleteRoutine(itemId);
           }
           closeModal();
         }}

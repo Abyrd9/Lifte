@@ -233,7 +233,10 @@ export const handleDeleteWorkout = async workoutId => {
   if (!!auth.currentUser) {
     const userId = auth.currentUser.uid;
     try {
-      await firebase.database().ref(`/users/${userId}/workouts/${workoutId}`);
+      await firebase
+        .database()
+        .ref(`/users/${userId}/workouts/${workoutId}`)
+        .remove();
       await handleDeleteWorkoutsInRoutine(workoutId, userId);
     } catch (err) {
       console.warn('Unable to remove workout.');
@@ -246,6 +249,7 @@ export const handleDeleteRoutine = async routineId => {
   const auth = firebase.auth();
   if (!!auth.currentUser) {
     const userId = auth.currentUser.uid;
+    console.log(userId, 'hey there');
     try {
       await firebase
         .database()

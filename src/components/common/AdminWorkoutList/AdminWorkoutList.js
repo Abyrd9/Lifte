@@ -48,7 +48,7 @@ class AdminWorkoutList extends Component {
         {isEditModalOpen && currentWorkout.hasOwnProperty('workoutId') && (
           <Modal>
             <ModalContentWorkout
-              initialWorkout={this.state.currentWorkout}
+              initialWorkout={currentWorkout}
               closeModal={() => this.setState({ isEditModalOpen: false })}
             />
           </Modal>
